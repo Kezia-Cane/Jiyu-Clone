@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var galleryCurrentIndex = document.getElementById('gallery-current-index');
   var galleryMainImg = document.getElementById('gallery-main-img');
   var desktopVariantMedia = document.getElementById('desktop-variant-media');
+  var galleryPrev = document.getElementById('gallery-prev');
+  var galleryNext = document.getElementById('gallery-next');
 
   var jarOptions = Array.from(document.querySelectorAll('.jar-option'));
   var autoRefillToggle = document.getElementById('auto-refill-toggle');
@@ -186,6 +188,24 @@ document.addEventListener('DOMContentLoaded', function () {
       goToGalleryIndex(Number(thumb.dataset.index), 'smooth');
     });
   });
+
+  if (galleryPrev) {
+    galleryPrev.addEventListener('click', function () {
+      var activeIndex = gallerySlides.findIndex(function (slide) {
+        return slide.classList.contains('is-active');
+      });
+      goToGalleryIndex(Math.max(0, activeIndex - 1), 'smooth');
+    });
+  }
+
+  if (galleryNext) {
+    galleryNext.addEventListener('click', function () {
+      var activeIndex = gallerySlides.findIndex(function (slide) {
+        return slide.classList.contains('is-active');
+      });
+      goToGalleryIndex(Math.min(gallerySlides.length - 1, activeIndex + 1), 'smooth');
+    });
+  }
 
   window.addEventListener('resize', function () {
     syncGalleryFromScroll();
