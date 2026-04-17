@@ -26,9 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var resultsSlides = Array.from(document.querySelectorAll('.result-slide'));
   var avatarBtns = Array.from(document.querySelectorAll('.avatar-btn'));
-  var dots = Array.from(document.querySelectorAll('.dot'));
+  var dotsContainer = document.getElementById('carousel-dots');
+  var dots = Array.from(dotsContainer ? dotsContainer.querySelectorAll('.dot') : []);
   var prevBtn = document.getElementById('results-prev');
   var nextBtn = document.getElementById('results-next');
+  var resultsViewport = document.querySelector('.results-viewport');
 
   var videoThumbs = Array.from(document.querySelectorAll('.video-thumb'));
   var ingredientsRow = document.getElementById('ingredients-row');
@@ -320,64 +322,116 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  function showResultSlide(index) {
-    if (!resultsSlides.length) {
+  function getResultsCardsPerPage() {
+    if (window.innerWidth <= 768) {
+      return 1;
+    }
+
+    return 2;
+  }
+
+  function getResultsMaxPage() {
+    return Math.max(0, resultsSlides.length - getResultsCardsPerPage());
+  }
+
+  function syncResultDots() {
+    if (!dotsContainer) {
       return;
     }
 
-    var safeIndex = index;
+    var requiredDots = getResultsMaxPage() + 1;
+    var dotMarkup = '';
+    var dotIndex = 0;
 
-    if (safeIndex < 0) {
-      safeIndex = resultsSlides.length - 1;
+    for (dotIndex = 0; dotIndex < requiredDots; dotIndex += 1) {
+      dotMarkup += '<span class="dot' + (dotIndex === 0 ? ' active' : '') + '" data-dot="' + dotIndex + '"></span>';
     }
 
-    if (safeIndex >= resultsSlides.length) {
-      safeIndex = 0;
+    dotsContainer.innerHTML = dotMarkup;
+    dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+  }
+
+  function setActiveResultAvatar(index) {
+    avatarBtns.forEach(function (btn, btnIndex) {
+      btn.classList.toggle('active', btnIndex === index);
+    });
+  }
+
+  function setActiveResultDot(index) {
+    dots.forEach(function (dot, dotIndex) {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+  }
+
+  function showResultSlide(index, activeAvatarIndex) {
+    if (!resultsSlides.length || !resultsViewport) {
+      return 0;
     }
+
+    var safePage = Math.max(0, Math.min(index, getResultsMaxPage()));
+    var slidesTrack = document.getElementById('results-slides');
+    var targetSlide = resultsSlides[safePage];
+    var maxTranslate = Math.max(0, slidesTrack.scrollWidth - resultsViewport.clientWidth);
+    var translateX = targetSlide ? Math.min(targetSlide.offsetLeft, maxTranslate) : 0;
+
+    slidesTrack.style.transform = 'translateX(-' + translateX + 'px)';
 
     resultsSlides.forEach(function (slide, slideIndex) {
-      slide.classList.toggle('active', slideIndex === safeIndex);
+      slide.classList.toggle('active', slideIndex === (activeAvatarIndex != null ? activeAvatarIndex : safePage));
     });
 
-    avatarBtns.forEach(function (btn, btnIndex) {
-      btn.classList.toggle('active', btnIndex === safeIndex);
-    });
+    setActiveResultAvatar(activeAvatarIndex != null ? activeAvatarIndex : safePage);
+    setActiveResultDot(safePage);
 
-    dots.forEach(function (dot, dotIndex) {
-      dot.classList.toggle('active', dotIndex === safeIndex);
-    });
-
-    return safeIndex;
+    return safePage;
   }
 
   var currentResultSlide = 0;
+  var currentActiveAvatar = 0;
 
   if (prevBtn) {
     prevBtn.addEventListener('click', function () {
-      currentResultSlide = showResultSlide(currentResultSlide - 1);
+      currentResultSlide = currentResultSlide <= 0 ? getResultsMaxPage() : currentResultSlide - 1;
+      currentActiveAvatar = currentResultSlide;
+      showResultSlide(currentResultSlide, currentActiveAvatar);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', function () {
-      currentResultSlide = showResultSlide(currentResultSlide + 1);
+      currentResultSlide = currentResultSlide >= getResultsMaxPage() ? 0 : currentResultSlide + 1;
+      currentActiveAvatar = currentResultSlide;
+      showResultSlide(currentResultSlide, currentActiveAvatar);
     });
   }
 
   avatarBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      currentResultSlide = showResultSlide(Number(btn.dataset.slide));
+      var avatarIndex = Number(btn.dataset.slide);
+      currentActiveAvatar = avatarIndex;
+      currentResultSlide = Math.min(avatarIndex, getResultsMaxPage());
+      showResultSlide(currentResultSlide, currentActiveAvatar);
     });
   });
 
-  dots.forEach(function (dot) {
-    dot.addEventListener('click', function () {
-      currentResultSlide = showResultSlide(Number(dot.dataset.dot));
+  if (dotsContainer) {
+    dotsContainer.addEventListener('click', function (event) {
+      var dot = event.target.closest('.dot');
+
+      if (!dot) {
+        return;
+      }
+
+      currentResultSlide = Number(dot.dataset.dot);
+      currentActiveAvatar = Math.min(currentResultSlide, resultsSlides.length - 1);
+      showResultSlide(currentResultSlide, currentActiveAvatar);
     });
-  });
+  }
 
   var resultsAutoplay = window.setInterval(function () {
-    currentResultSlide = showResultSlide(currentResultSlide + 1);
+    currentResultSlide = currentResultSlide >= getResultsMaxPage() ? 0 : currentResultSlide + 1;
+    currentActiveAvatar = currentResultSlide;
+    showResultSlide(currentResultSlide, currentActiveAvatar);
   }, 6500);
 
   var resultsCarousel = document.getElementById('results-carousel');
@@ -389,10 +443,22 @@ document.addEventListener('DOMContentLoaded', function () {
     resultsCarousel.addEventListener('mouseleave', function () {
       window.clearInterval(resultsAutoplay);
       resultsAutoplay = window.setInterval(function () {
-        currentResultSlide = showResultSlide(currentResultSlide + 1);
+        currentResultSlide = currentResultSlide >= getResultsMaxPage() ? 0 : currentResultSlide + 1;
+        currentActiveAvatar = currentResultSlide;
+        showResultSlide(currentResultSlide, currentActiveAvatar);
       }, 6500);
     });
   }
+
+  window.addEventListener('resize', function () {
+    syncResultDots();
+    currentResultSlide = Math.min(currentResultSlide, getResultsMaxPage());
+    currentActiveAvatar = Math.min(currentActiveAvatar, resultsSlides.length - 1);
+    showResultSlide(currentResultSlide, currentActiveAvatar);
+  });
+
+  syncResultDots();
+  showResultSlide(0, 0);
 
   videoThumbs.forEach(function (thumb) {
     var video = thumb.querySelector('video');
