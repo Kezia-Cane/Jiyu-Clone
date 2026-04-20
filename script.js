@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var prevBtn = document.getElementById('results-prev');
   var nextBtn = document.getElementById('results-next');
   var resultsViewport = document.querySelector('.results-viewport');
+  var benefitStrip = document.getElementById('benefit-strip');
 
   var videoThumbs = Array.from(document.querySelectorAll('.video-thumb'));
   var ingredientsRow = document.getElementById('ingredients-row');
@@ -530,6 +531,54 @@ document.addEventListener('DOMContentLoaded', function () {
       var walk = (x - startX) * 2;
       ingredientsRow.scrollLeft = scrollLeft - walk;
     });
+  }
+
+  if (benefitStrip) {
+    var benefitStripHovered = false;
+    var benefitStripInView = false;
+
+    function syncBenefitStripState(isInView) {
+      benefitStripInView = Boolean(isInView);
+      benefitStrip.classList.toggle('is-animating', benefitStripInView && !benefitStripHovered);
+      benefitStrip.classList.toggle('is-paused', benefitStripHovered);
+      benefitStrip.dataset.inView = benefitStripInView ? 'true' : 'false';
+    }
+
+    function updateBenefitStripVisibility() {
+      var rect = benefitStrip.getBoundingClientRect();
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+      var visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+      var isInView = visibleHeight > Math.min(rect.height * 0.15, 80);
+
+      syncBenefitStripState(isInView);
+    }
+
+    benefitStrip.addEventListener('mouseenter', function () {
+      benefitStripHovered = true;
+      syncBenefitStripState(benefitStripInView);
+    });
+
+    benefitStrip.addEventListener('mouseleave', function () {
+      benefitStripHovered = false;
+      syncBenefitStripState(benefitStripInView);
+    });
+
+    if ('IntersectionObserver' in window) {
+      var benefitStripObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var isInView = entry.isIntersecting && entry.intersectionRatio >= 0.15;
+          syncBenefitStripState(isInView);
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      benefitStripObserver.observe(benefitStrip);
+    }
+
+    window.addEventListener('scroll', updateBenefitStripVisibility, { passive: true });
+    window.addEventListener('resize', updateBenefitStripVisibility);
+    window.requestAnimationFrame(updateBenefitStripVisibility);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
