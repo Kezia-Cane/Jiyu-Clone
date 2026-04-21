@@ -1620,7 +1620,7 @@ ul {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .site-nav {
     display: none;
   }
@@ -2680,7 +2680,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .announcement-bar {
     padding: 9px 10px;
   }
@@ -3146,7 +3146,7 @@ select {
   transform: rotate(-45deg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .gallery-card--product img {
     padding: 0;
   }
@@ -3205,7 +3205,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
     background: var(--brand-cream);
   }
@@ -4061,7 +4061,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-combo-intro {
     display: none;
   }
@@ -4612,7 +4612,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .jar-options-label {
     margin-bottom: 12px;
     font-size: 12px;
@@ -5811,7 +5811,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .real-results {
     padding: 44px 16px 36px;
   }
@@ -5996,7 +5996,7 @@ select {
   color: rgba(41, 45, 34, 0.74);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .clinical-ingredients {
     padding: 48px 0 36px;
   }
@@ -6243,7 +6243,7 @@ select {
   color: rgba(0, 110, 55, 0.72);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .how-different {
     padding: 44px 16px 34px;
   }
@@ -7014,7 +7014,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .video-thumbs-row {
     grid-template-columns: repeat(5, minmax(72px, 1fr));
     gap: 8px;
@@ -7169,7 +7169,7 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .benefit-strip {
     display: block;
     padding: 12px 0;
@@ -7445,7 +7445,7 @@ select {
   color: var(--brand-green);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .newsletter-section {
     padding: 42px 18px 32px;
   }
@@ -7555,7 +7555,7 @@ select {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .video-thumbs-row {
     display: flex !important;
     align-items: stretch;
@@ -7837,7 +7837,7 @@ video {
   height: 32px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .section-heading,
   .reviews-showcase .section-heading,
   .clinical-ingredients .section-heading,
@@ -8210,7 +8210,7 @@ video {
 }
 
 /* Mobile comparison table match */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #how-different {
     padding: 46px 16px 34px;
     overflow-x: hidden;
@@ -8412,7 +8412,7 @@ video {
 }
 
 /* Mobile customer reviews summary match */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #customer-reviews {
     padding: 36px 16px 26px;
     overflow-x: hidden;
@@ -8647,7 +8647,7 @@ video {
 }
 
 /* Mobile readability pass */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
     font-size: 16.5px;
   }
@@ -8995,7 +8995,7 @@ video {
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .benefit-strip {
     padding: 20px 0;
   }
@@ -9091,7 +9091,7 @@ video {
 }
 
 /* Announcement tablet/mobile reference sizing */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body > div.announcement-bar {
     left: auto;
     width: 100% !important;
@@ -9166,7 +9166,7 @@ video {
 }
 
 /* Product info video row mobile reference */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #product-info > div.video-thumbs-row {
     display: flex !important;
     align-items: stretch;
@@ -9267,5 +9267,81 @@ video {
     height: 42px;
     padding: 0 16px;
     font-size: 11px;
+  }
+}
+
+/* Tablet / small-laptop responsive stabilization */
+@media (min-width: 431px) and (max-width: 1024px) {
+  .product-page {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .product-page__inner {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .product-gallery,
+  .product-info {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .gallery-mobile-shell,
+  .gallery-mobile-track,
+  .gallery-thumb-row,
+  .jar-options,
+  .purchase-row,
+  .auto-refill,
+  .bundle-save,
+  #product-info > div.video-thumbs-row {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .gallery-mobile-shell {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .gallery-mobile-track {
+    overflow-x: auto;
+  }
+
+  .gallery-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .gallery-thumbnails {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .jar-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .jar-option,
+  .jar-option__card,
+  .add-to-cart-btn {
+    min-width: 0;
+  }
+
+  .purchase-row {
+    flex-wrap: nowrap;
+  }
+
+  .bundle-save {
+    flex-wrap: wrap;
   }
 }
