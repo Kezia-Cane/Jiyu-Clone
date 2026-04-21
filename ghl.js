@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var jarOptions = Array.from(document.querySelectorAll('.jar-option'));
   var autoRefillToggle = document.getElementById('auto-refill-toggle');
   var autoRefillTitle = document.getElementById('auto-refill-title');
+  var autoRefillSub = document.querySelector('.auto-refill__sub');
 
   var qtyValue = document.getElementById('qty-value');
   var minusBtn = document.querySelector('.qty-minus');
@@ -137,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var daily = option.querySelector('.price-daily');
       var price = useSubscription ? option.dataset.subscription : option.dataset.regular;
       var comparePrice = useSubscription ? option.dataset.subscriptionCompare : option.dataset.regularCompare;
+      var dailyPrice = useSubscription ? option.dataset.subscriptionDaily : option.dataset.regularDaily;
 
       if (current) {
         current.textContent = formatPrice(price);
@@ -153,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (daily) {
-        if (useSubscription) {
-          daily.textContent = formatPrice(option.dataset.daily) + ' per day';
+        if (dailyPrice) {
+          daily.textContent = formatPrice(dailyPrice) + ' per day';
           daily.style.display = 'block';
         } else {
           daily.textContent = '';
@@ -163,8 +165,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    if (selectedOption && autoRefillTitle) {
-      autoRefillTitle.textContent = 'Save ' + selectedOption.dataset.discount + '% with Automatic Refills!';
+    if (autoRefillTitle) {
+      autoRefillTitle.textContent = useSubscription ? 'Save 30% with Automatic Refills' : 'One-Time Purchase';
+    }
+
+    if (autoRefillSub) {
+      autoRefillSub.textContent = useSubscription ? 'Cancel Anytime \u2013 No Commitment' : 'No automatic refills';
+    }
+
+    if (selectedOption) {
       updateVariantMedia(selectedOption.dataset.image);
     }
   }
