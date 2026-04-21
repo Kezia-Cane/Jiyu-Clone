@@ -1,0 +1,1898 @@
+{
+  "summary": {
+    "total_files_scanned": 93,
+    "total_used": 46,
+    "total_unused": 37,
+    "total_duplicates": 2,
+    "total_moved_to_review": 9,
+    "applied": true
+  },
+  "assets": [
+    {
+      "path": "branding.png",
+      "name": "branding.png",
+      "extension": ".png",
+      "size_bytes": 37626,
+      "sha256": "5c3a9735a16777068932d77ba642bdbba2cf6e888b33c510fcf56e0a2ed07ddb",
+      "dimensions": {
+        "width": 718,
+        "height": 559
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "branding",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/branding.png"
+    },
+    {
+      "path": "comparision/check.svg",
+      "name": "check.svg",
+      "extension": ".svg",
+      "size_bytes": 351,
+      "sha256": "8a8a50dd4e501c34fd84728830b8cd2d8a6e912ded599302b113277f249d5434",
+      "dimensions": {
+        "width": 28.0,
+        "height": 28.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/check.svg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/check.svg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/check.svg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/check.svg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/check.svg"
+        }
+      ],
+      "filename_family": "check",
+      "classification": "USED",
+      "final_path": "used/icons/check.svg"
+    },
+    {
+      "path": "comparision/image_89.png",
+      "name": "image_89.png",
+      "extension": ".png",
+      "size_bytes": 16581,
+      "sha256": "2abd73e0ba9d81a14231b68146425089ea8bd2df3854722489146ca37eed780e",
+      "dimensions": {
+        "width": 218,
+        "height": 180
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/image_89.png"
+        }
+      ],
+      "filename_family": "image",
+      "classification": "USED",
+      "final_path": "used/products/image_89.png"
+    },
+    {
+      "path": "comparision/JiYu_Product_on_White_-_Jar_Front-Facing1_1_1_b4e5d62f-7436-4337-99b9-48b2536eb6f8.png",
+      "name": "JiYu_Product_on_White_-_Jar_Front-Facing1_1_1_b4e5d62f-7436-4337-99b9-48b2536eb6f8.png",
+      "extension": ".png",
+      "size_bytes": 113907,
+      "sha256": "f433420be386695195e0eed2b83ccfd16f0310e9ff9d2440258e521424909653",
+      "dimensions": {
+        "width": 320,
+        "height": 311
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/JiYu_Product_on_White_-_Jar_Front-Facing1_1_1_b4e5d62f-7436-4337-99b9-48b2536eb6f8.png"
+        }
+      ],
+      "filename_family": "jiyu-product-on-white-jar-front-facing1-1-1-b4e5d62f-7436-4337-99b9-48b2536eb6f",
+      "classification": "USED",
+      "final_path": "used/products/JiYu_Product_on_White_-_Jar_Front-Facing1_1_1_b4e5d62f-7436-4337-99b9-48b2536eb6f8.png"
+    },
+    {
+      "path": "comparision/toner-pad-model.jpeg",
+      "name": "toner-pad-model.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 27755,
+      "sha256": "c3b9aeee8c896e68606321576e012548d0c9330fc2f0488357c1c1695322dd6a",
+      "dimensions": {
+        "height": 400,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/comparision/toner-pad-model.jpeg"
+        }
+      ],
+      "filename_family": "toner-pad-model",
+      "classification": "USED",
+      "final_path": "used/products/toner-pad-model.jpeg"
+    },
+    {
+      "path": "corrects-aging-icon.png",
+      "name": "corrects-aging-icon.png",
+      "extension": ".png",
+      "size_bytes": 23358,
+      "sha256": "f27c2668123c0835a76768dc2edd32cd77458ba1d3e9e4f707af4d5d28987cd0",
+      "dimensions": {
+        "width": 120,
+        "height": 120
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/corrects-aging-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/corrects-aging-icon.png"
+        }
+      ],
+      "filename_family": "corrects-aging-icon",
+      "classification": "USED",
+      "final_path": "used/icons/corrects-aging-icon.png"
+    },
+    {
+      "path": "energizes-icon.png",
+      "name": "energizes-icon.png",
+      "extension": ".png",
+      "size_bytes": 23591,
+      "sha256": "bd8550047df6e9fee703b5130ffe9cc6f1e50f791bb70b535fc22cc51534b8a5",
+      "dimensions": {
+        "width": 120,
+        "height": 122
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/energizes-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/energizes-icon.png"
+        }
+      ],
+      "filename_family": "energizes-icon",
+      "classification": "USED",
+      "final_path": "used/icons/energizes-icon.png"
+    },
+    {
+      "path": "footer icons/015d5b52-1f31-498f-8af9-0f236a28f136.svg",
+      "name": "015d5b52-1f31-498f-8af9-0f236a28f136.svg",
+      "extension": ".svg",
+      "size_bytes": 62837,
+      "sha256": "85bd89401a7f5d3852b1679dab5d08b9a37ad6d4ec4a8e02e30bb46b106929ec",
+      "dimensions": {
+        "width": 108.0,
+        "height": 108.0
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "015d5b52-1f31-498f-8af9-0f236a28f",
+      "classification": "DUPLICATE_UNUSED",
+      "final_path": "duplicates/footer icons/015d5b52-1f31-498f-8af9-0f236a28f136.svg"
+    },
+    {
+      "path": "footer icons/09ffc103-4029-45cf-9c26-f3216e7c77eb.svg",
+      "name": "09ffc103-4029-45cf-9c26-f3216e7c77eb.svg",
+      "extension": ".svg",
+      "size_bytes": 633,
+      "sha256": "c8cfcd2aede4a410592f19a292c9d40f1320229d0c2bba33e2b97e2e79ed5204",
+      "dimensions": {
+        "width": 32.0,
+        "height": 32.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/footer%20icons/09ffc103-4029-45cf-9c26-f3216e7c77eb.svg"
+        }
+      ],
+      "filename_family": "09ffc103-4029-45cf-9c26-f3216e7c77eb",
+      "classification": "USED",
+      "final_path": "used/icons/09ffc103-4029-45cf-9c26-f3216e7c77eb.svg"
+    },
+    {
+      "path": "footer icons/311057dc-472c-4559-9911-d618ccda4f46.svg",
+      "name": "311057dc-472c-4559-9911-d618ccda4f46.svg",
+      "extension": ".svg",
+      "size_bytes": 511,
+      "sha256": "3b03870503df3446de80b34af16a004def640fc40c628b461e861acbbf05d9ab",
+      "dimensions": {
+        "width": 32.0,
+        "height": 32.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/footer%20icons/311057dc-472c-4559-9911-d618ccda4f46.svg"
+        }
+      ],
+      "filename_family": "311057dc-472c-4559-9911-d618ccda4f",
+      "classification": "USED",
+      "final_path": "used/icons/311057dc-472c-4559-9911-d618ccda4f46.svg"
+    },
+    {
+      "path": "footer icons/38588adf-26f2-4261-9790-67ac82bb0bfc.svg",
+      "name": "38588adf-26f2-4261-9790-67ac82bb0bfc.svg",
+      "extension": ".svg",
+      "size_bytes": 476,
+      "sha256": "7ae7e96c6a2f705abefac2038ceeb2cd47f6e8cbd2a6a7f1bd17a0e5e6277b04",
+      "dimensions": {
+        "width": 32.0,
+        "height": 32.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/footer%20icons/38588adf-26f2-4261-9790-67ac82bb0bfc.svg"
+        }
+      ],
+      "filename_family": "38588adf-26f2-4261-9790-67ac82bb0bfc",
+      "classification": "USED",
+      "final_path": "used/icons/38588adf-26f2-4261-9790-67ac82bb0bfc.svg"
+    },
+    {
+      "path": "footer icons/86696c8f-8525-4f63-af31-2c00def8c52d.svg",
+      "name": "86696c8f-8525-4f63-af31-2c00def8c52d.svg",
+      "extension": ".svg",
+      "size_bytes": 3195,
+      "sha256": "fdea71d50295cdf2776d5ef3d417f8b3bb4620160b22d3158bae8bf94632e843",
+      "dimensions": {
+        "width": 32.0,
+        "height": 32.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/footer%20icons/86696c8f-8525-4f63-af31-2c00def8c52d.svg"
+        }
+      ],
+      "filename_family": "86696c8f-8525-4f63-af31-2c00def8c52d",
+      "classification": "USED",
+      "final_path": "used/icons/86696c8f-8525-4f63-af31-2c00def8c52d.svg"
+    },
+    {
+      "path": "ingredients/alpha-arbutin.jpg.jpeg",
+      "name": "alpha-arbutin.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 8608,
+      "sha256": "64a41db8f12ce895c7417939ff3ddaa86aa7a3949c0453369974493e3658160e",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/alpha-arbutin.jpg.jpeg"
+        }
+      ],
+      "filename_family": "alpha-arbutin-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/alpha-arbutin.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/Centella_Asiatica.jpg.jpeg",
+      "name": "Centella_Asiatica.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 30589,
+      "sha256": "7495e1929c1456b6f2cc5af38f3e12fa864b2d46afc10e552c2dabff073c74d4",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/Centella_Asiatica.jpg.jpeg"
+        }
+      ],
+      "filename_family": "centella-asiatica-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/Centella_Asiatica.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/hyaluronic-acid.jpg.jpeg",
+      "name": "hyaluronic-acid.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 23844,
+      "sha256": "3471ea7a9cd21a0124aabd5bb77aa2354599a2cb685cedb5930bbfd0234d95b8",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/hyaluronic-acid.jpg.jpeg"
+        }
+      ],
+      "filename_family": "hyaluronic-acid-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/hyaluronic-acid.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/licorice-root-extract.jpg.jpeg",
+      "name": "licorice-root-extract.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 37872,
+      "sha256": "edd8a9992317c55a2ef93feb23d4ff5fd921bc4195a885c4ce87267a2fd17b9a",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/licorice-root-extract.jpg.jpeg"
+        }
+      ],
+      "filename_family": "licorice-root-extract-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/licorice-root-extract.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/niacinamide.jpg.jpeg",
+      "name": "niacinamide.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 10428,
+      "sha256": "b2d94cfcb4849a28a965039260a520f8a18b03f72a6a2c56d5bbe1205a58178d",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/niacinamide.jpg.jpeg"
+        }
+      ],
+      "filename_family": "niacinamide-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/niacinamide.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/peptides.jpg.jpeg",
+      "name": "peptides.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 29817,
+      "sha256": "6d60defa871a563b43d1e6458ec88c0fa51751d32d5a6406da7ce702a561a9cc",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/peptides.jpg.jpeg"
+        }
+      ],
+      "filename_family": "peptides-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/peptides.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/snail-mucin.jpg.jpeg",
+      "name": "snail-mucin.jpg.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 11313,
+      "sha256": "1a2bad65bc259a3938d867417489b23e112d2942b66554b01605f37330908614",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/snail-mucin.jpg.jpeg"
+        }
+      ],
+      "filename_family": "snail-mucin-jpg",
+      "classification": "USED",
+      "final_path": "used/ingredients/snail-mucin.jpg.jpeg"
+    },
+    {
+      "path": "ingredients/vitamin-c-derivative.jpeg",
+      "name": "vitamin-c-derivative.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 36148,
+      "sha256": "6a79a53cbaec5f9043139b425a2b4d46a6d0d02f69f857b1f91b87bc5d54f304",
+      "dimensions": {
+        "height": 400,
+        "width": 300
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/ingredients/vitamin-c-derivative.jpeg"
+        }
+      ],
+      "filename_family": "vitamin-c-derivative",
+      "classification": "USED",
+      "final_path": "used/ingredients/vitamin-c-derivative.jpeg"
+    },
+    {
+      "path": "jiyu-logo.png",
+      "name": "jiyu-logo.png",
+      "extension": ".png",
+      "size_bytes": 1597,
+      "sha256": "c96479009465945078ca6f4d6aae758a9cc53b8198ebbfba2656888b42ef3354",
+      "dimensions": {
+        "width": 203,
+        "height": 73
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "jiyu-logo",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/jiyu-logo.png"
+    },
+    {
+      "path": "missing photos/1AFTER.jpeg",
+      "name": "1AFTER.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 36467,
+      "sha256": "2edf60a4735007b0d18b33f535a88b0983310d56676fa8521499f43808e2c903",
+      "dimensions": {
+        "height": 500,
+        "width": 500
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1AFTER.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1AFTER.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1AFTER.jpeg"
+        }
+      ],
+      "filename_family": "1after",
+      "classification": "USED",
+      "final_path": "used/products/1AFTER.jpeg"
+    },
+    {
+      "path": "missing photos/1BEFORE.jpeg",
+      "name": "1BEFORE.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 44218,
+      "sha256": "498459498eb52bcaac4838fd34f54b562542a359da1b6e157a8b8f19f92f0bc6",
+      "dimensions": {
+        "height": 500,
+        "width": 500
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1BEFORE.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1BEFORE.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/1BEFORE.jpeg"
+        }
+      ],
+      "filename_family": "1before",
+      "classification": "USED",
+      "final_path": "used/products/1BEFORE.jpeg"
+    },
+    {
+      "path": "missing photos/JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg",
+      "name": "JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 108308,
+      "sha256": "58d93884478828ed0ce7782d456ebd52754bd63dfac2897c198de933920849f2",
+      "dimensions": {
+        "height": 1646,
+        "width": 1646
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg"
+        }
+      ],
+      "filename_family": "jiyu-9-24-10549-bfb33a2a-d18e-43bd-a358-8a4b5496cd5c",
+      "classification": "USED",
+      "final_path": "used/products/JIYU_9_24_10549_bfb33a2a-d18e-43bd-a358-8a4b5496cd5c_1.jpeg"
+    },
+    {
+      "path": "missing photos/JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg",
+      "name": "JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 238276,
+      "sha256": "4ed264f2d314586b8707ffa4d4848862389935437c50dbbf3ea8cc0c142c5c32",
+      "dimensions": {
+        "height": 1445,
+        "width": 1445
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg"
+        }
+      ],
+      "filename_family": "jiyu-9-24-10750-a6cde000-bd3f-4ccd-b65d-156208cdcaab",
+      "classification": "USED",
+      "final_path": "used/products/JIYU_9_24_10750_a6cde000-bd3f-4ccd-b65d-156208cdcaab.jpeg"
+    },
+    {
+      "path": "missing photos/JIYU_9_24_10790.jpeg",
+      "name": "JIYU_9_24_10790.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 461670,
+      "sha256": "8c031d28c496d8ea786bdeadb5b27e49f54791346f4ffc984244fe6aa6d284fd",
+      "dimensions": {
+        "height": 1646,
+        "width": 1646
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10790.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10790.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/JIYU_9_24_10790.jpeg"
+        }
+      ],
+      "filename_family": "jiyu-9-24",
+      "classification": "USED",
+      "final_path": "used/products/JIYU_9_24_10790.jpeg"
+    },
+    {
+      "path": "missing photos/p6.png",
+      "name": "p6.png",
+      "extension": ".png",
+      "size_bytes": 124351,
+      "sha256": "9593d44feca430079cb6edaf9bbfd3509bee7c884b0ed5444899f01d2b6d5dd2",
+      "dimensions": {
+        "width": 960,
+        "height": 960
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/p6.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/p6.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/missing%20photos/p6.png"
+        }
+      ],
+      "filename_family": "p",
+      "classification": "USED",
+      "final_path": "used/products/p6.png"
+    },
+    {
+      "path": "moisturizes-icon.png",
+      "name": "moisturizes-icon.png",
+      "extension": ".png",
+      "size_bytes": 19639,
+      "sha256": "2f622a932248c308080394ef62b1fd360648fb3298405eda93eb5e6ef4311bad",
+      "dimensions": {
+        "width": 120,
+        "height": 122
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/moisturizes-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/moisturizes-icon.png"
+        }
+      ],
+      "filename_family": "moisturizes-icon",
+      "classification": "USED",
+      "final_path": "used/icons/moisturizes-icon.png"
+    },
+    {
+      "path": "nourishes-icon.png",
+      "name": "nourishes-icon.png",
+      "extension": ".png",
+      "size_bytes": 22432,
+      "sha256": "44f5293c896516eb9dd3403ac4e21e6d40c0ffca3b4123336d06bc324e8347b5",
+      "dimensions": {
+        "width": 120,
+        "height": 121
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/nourishes-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/nourishes-icon.png"
+        }
+      ],
+      "filename_family": "nourishes-icon",
+      "classification": "USED",
+      "final_path": "used/icons/nourishes-icon.png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (1).png",
+      "name": "pomelli_bdna_image_0417 (1).png",
+      "extension": ".png",
+      "size_bytes": 80322,
+      "sha256": "73c96a02e33a82ff4b3710ef90ca1d12321a0d57e075eafd29c52d75f1becd5e",
+      "dimensions": {
+        "width": 320,
+        "height": 311
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (1).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (10).png",
+      "name": "pomelli_bdna_image_0417 (10).png",
+      "extension": ".png",
+      "size_bytes": 291679,
+      "sha256": "4c84db875fa93d5e611231a514b3dae00c3031395c3c591c89b7c3853cd4ce73",
+      "dimensions": {
+        "width": 1500,
+        "height": 900
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/pomelli_bdna_image_0417%20(10).png"
+        }
+      ],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "USED",
+      "final_path": "used/products/pomelli_bdna_image_0417 (10).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (11).png",
+      "name": "pomelli_bdna_image_0417 (11).png",
+      "extension": ".png",
+      "size_bytes": 232586,
+      "sha256": "9a37f9485204042c24edc914dcbd2c640dc2a9b6b4e9ff3db230708a600e69dc",
+      "dimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (11).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (12).png",
+      "name": "pomelli_bdna_image_0417 (12).png",
+      "extension": ".png",
+      "size_bytes": 306338,
+      "sha256": "04e30feab06d7b0f73592faa1ee25148a2ca0f386a5314c8f0a8b0c0b516fd5d",
+      "dimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (12).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (13).png",
+      "name": "pomelli_bdna_image_0417 (13).png",
+      "extension": ".png",
+      "size_bytes": 823669,
+      "sha256": "592b2f291b876b960d8160508832b572be65d83d0ffe00ed10da7a35139d14a6",
+      "dimensions": {
+        "width": 800,
+        "height": 1430
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (13).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (14).png",
+      "name": "pomelli_bdna_image_0417 (14).png",
+      "extension": ".png",
+      "size_bytes": 675392,
+      "sha256": "9f573abdd64dd126457bce25ffff51db87061f8d11076cde100f77ab361c86f7",
+      "dimensions": {
+        "width": 800,
+        "height": 1419
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (14).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (15).png",
+      "name": "pomelli_bdna_image_0417 (15).png",
+      "extension": ".png",
+      "size_bytes": 120044,
+      "sha256": "034cd6ed8c09b3907b009ce26f144fee69993c31963e03962f697f61aeff679a",
+      "dimensions": {
+        "width": 197,
+        "height": 350
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (15).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (16).png",
+      "name": "pomelli_bdna_image_0417 (16).png",
+      "extension": ".png",
+      "size_bytes": 2529206,
+      "sha256": "f3a715dd7fbebc3135d2b6498cd27c88a08248ba4b578b2fe34e8833e415a761",
+      "dimensions": {
+        "width": 1667,
+        "height": 1667
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (16).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (17).png",
+      "name": "pomelli_bdna_image_0417 (17).png",
+      "extension": ".png",
+      "size_bytes": 692535,
+      "sha256": "cca6da3257172dab64b4169d92d4e5d0195b98b8d929b812bfe9da1c422aebd3",
+      "dimensions": {
+        "width": 800,
+        "height": 1213
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (17).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (18).png",
+      "name": "pomelli_bdna_image_0417 (18).png",
+      "extension": ".png",
+      "size_bytes": 375936,
+      "sha256": "e7fd13548abf2edced4ddad366675253e1cf76aebd832fc5e6dfc4b5ebf62303",
+      "dimensions": {
+        "width": 394,
+        "height": 700
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (18).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (19).png",
+      "name": "pomelli_bdna_image_0417 (19).png",
+      "extension": ".png",
+      "size_bytes": 675392,
+      "sha256": "c7803bf685029b0d9cbb825202c49e746fcc5340f9a30c61ed469678d1298a1e",
+      "dimensions": {
+        "width": 800,
+        "height": 1419
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (19).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (2).png",
+      "name": "pomelli_bdna_image_0417 (2).png",
+      "extension": ".png",
+      "size_bytes": 413676,
+      "sha256": "fb9e6ac331f6a84fb9c13bdf152371623ed2b591ad9c18102e66157e9b5c3e78",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (2).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (20).png",
+      "name": "pomelli_bdna_image_0417 (20).png",
+      "extension": ".png",
+      "size_bytes": 742356,
+      "sha256": "02fc6059036ed4f9167495fd4eb07a1466f8dbe7c93583331f8cdca38a626a31",
+      "dimensions": {
+        "width": 800,
+        "height": 1371
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (20).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (21).png",
+      "name": "pomelli_bdna_image_0417 (21).png",
+      "extension": ".png",
+      "size_bytes": 1624731,
+      "sha256": "91893c80c872c3648af0cd1832a79650cf8304244db91946076a53af1fae0b8b",
+      "dimensions": {
+        "width": 900,
+        "height": 1092
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (21).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (22).png",
+      "name": "pomelli_bdna_image_0417 (22).png",
+      "extension": ".png",
+      "size_bytes": 828047,
+      "sha256": "a299eaa4dd210ab7e72d9cd71d534735d13049dad317004a95bc7c307b1a90a7",
+      "dimensions": {
+        "width": 900,
+        "height": 900
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (22).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (23).png",
+      "name": "pomelli_bdna_image_0417 (23).png",
+      "extension": ".png",
+      "size_bytes": 823669,
+      "sha256": "99a42ebc691d642d3fd61d6f3c76bc8d06df2a2f0ab210ce1a05daab796a788c",
+      "dimensions": {
+        "width": 800,
+        "height": 1430
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (23).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (24).png",
+      "name": "pomelli_bdna_image_0417 (24).png",
+      "extension": ".png",
+      "size_bytes": 457614,
+      "sha256": "9deb6fec26b3e38ce1e4312901ab23e2e1e4245b45468722fba5fa6eb1c60987",
+      "dimensions": {
+        "width": 479,
+        "height": 858
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (24).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (25).png",
+      "name": "pomelli_bdna_image_0417 (25).png",
+      "extension": ".png",
+      "size_bytes": 667252,
+      "sha256": "1ba801faf4dcd4cdb40fb5af3df6f7e6d148b24a7761ab884b4a150a249ba62c",
+      "dimensions": {
+        "width": 720,
+        "height": 1280
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (25).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (26).png",
+      "name": "pomelli_bdna_image_0417 (26).png",
+      "extension": ".png",
+      "size_bytes": 1151582,
+      "sha256": "e70a6e21dece7e0294c51c01db9fe61b94840070f2aa419526d1990d72122d60",
+      "dimensions": {
+        "width": 990,
+        "height": 990
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (26).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (27).png",
+      "name": "pomelli_bdna_image_0417 (27).png",
+      "extension": ".png",
+      "size_bytes": 329430,
+      "sha256": "44961b4e7fdad548f700c0517f0bb5da0d6e3d5ce36b33a328bf2885015f722c",
+      "dimensions": {
+        "width": 360,
+        "height": 640
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (27).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (28).png",
+      "name": "pomelli_bdna_image_0417 (28).png",
+      "extension": ".png",
+      "size_bytes": 662662,
+      "sha256": "e1a4eaf49a2846b071ebf73ceb5abde07e2c46c02516b734fc775fd55689ad92",
+      "dimensions": {
+        "width": 720,
+        "height": 1280
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (28).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (29).png",
+      "name": "pomelli_bdna_image_0417 (29).png",
+      "extension": ".png",
+      "size_bytes": 1339147,
+      "sha256": "57a665a0d44b6fb755c15a6c045dc17412e57d3f7c71ba54b74b7433b22d0038",
+      "dimensions": {
+        "width": 990,
+        "height": 990
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (29).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (3).png",
+      "name": "pomelli_bdna_image_0417 (3).png",
+      "extension": ".png",
+      "size_bytes": 383540,
+      "sha256": "7fb431ba4dd12dd6329274f1ccfd192c8451fe425d4d23c4f47c9983cd883541",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (3).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (30).png",
+      "name": "pomelli_bdna_image_0417 (30).png",
+      "extension": ".png",
+      "size_bytes": 347150,
+      "sha256": "f16bfa0124d6e4c92e3b23c37017003897bbfa445b573797c3382be4eedd6c08",
+      "dimensions": {
+        "width": 400,
+        "height": 700
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (30).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (31).png",
+      "name": "pomelli_bdna_image_0417 (31).png",
+      "extension": ".png",
+      "size_bytes": 828969,
+      "sha256": "dd63c6a873d33900aea7f0b970e86afec7e0c88769f13ddb7e767e87897f76cc",
+      "dimensions": {
+        "width": 800,
+        "height": 1227
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (31).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (32).png",
+      "name": "pomelli_bdna_image_0417 (32).png",
+      "extension": ".png",
+      "size_bytes": 349917,
+      "sha256": "a3d30155e37e078f7cb957e04b7ed4d960885903c9cb3de5838dba377c730204",
+      "dimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (32).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (33).png",
+      "name": "pomelli_bdna_image_0417 (33).png",
+      "extension": ".png",
+      "size_bytes": 423677,
+      "sha256": "4d43fecfe2623fadc106c8a3e5e9b69a5980f269fece073e9155745ec5bffcf0",
+      "dimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (33).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (34).png",
+      "name": "pomelli_bdna_image_0417 (34).png",
+      "extension": ".png",
+      "size_bytes": 491187,
+      "sha256": "bb6bea155989e766eab11d9d90ac955ffcca598a51465ded5c749390fa1c2df2",
+      "dimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (34).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (35).png",
+      "name": "pomelli_bdna_image_0417 (35).png",
+      "extension": ".png",
+      "size_bytes": 407691,
+      "sha256": "7351bbea66a8f04df4e5abebc9bf133f6c9cc80d501408fa810e7bc76c9043a2",
+      "dimensions": {
+        "width": 600,
+        "height": 600
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (35).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (36).png",
+      "name": "pomelli_bdna_image_0417 (36).png",
+      "extension": ".png",
+      "size_bytes": 479491,
+      "sha256": "970d7177c4ed57a6df11643b08867696de12c2b29777b30ad965b5f55c35f8ec",
+      "dimensions": {
+        "width": 616,
+        "height": 616
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (36).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (37).png",
+      "name": "pomelli_bdna_image_0417 (37).png",
+      "extension": ".png",
+      "size_bytes": 355102,
+      "sha256": "31c7f4449dc1795ff2d8688bc2dd0cba8d21e24b3598589a2b05dd631f322f0b",
+      "dimensions": {
+        "width": 400,
+        "height": 700
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (37).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (38).png",
+      "name": "pomelli_bdna_image_0417 (38).png",
+      "extension": ".png",
+      "size_bytes": 689639,
+      "sha256": "0e2370bbd54b1e6b7326b676e65a05b1b8bee85fe4a661da706bc446adedf249",
+      "dimensions": {
+        "width": 800,
+        "height": 1371
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (38).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (4).png",
+      "name": "pomelli_bdna_image_0417 (4).png",
+      "extension": ".png",
+      "size_bytes": 381919,
+      "sha256": "c79584d7dbc8491d024e467ce1f3cabd6e6a4a0a6176af34ae21077e0830cfab",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/pomelli_bdna_image_0417 (4).png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/pomelli_bdna_image_0417 (4).png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/pomelli_bdna_image_0417 (4).png"
+        }
+      ],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "USED",
+      "final_path": "used/products/pomelli_bdna_image_0417 (4).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (5).png",
+      "name": "pomelli_bdna_image_0417 (5).png",
+      "extension": ".png",
+      "size_bytes": 618116,
+      "sha256": "d256a0fdaf8a53a34120542bcd06b59be37c250d6c643a257d052cc4e3fdd605",
+      "dimensions": {
+        "width": 1673,
+        "height": 1673
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (5).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (6).png",
+      "name": "pomelli_bdna_image_0417 (6).png",
+      "extension": ".png",
+      "size_bytes": 627862,
+      "sha256": "4f44c3d39b8b838892ba1f97ee4c599dee4642f648ae1c8bc9a53a7837a2b00e",
+      "dimensions": {
+        "width": 1668,
+        "height": 1668
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (6).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (7).png",
+      "name": "pomelli_bdna_image_0417 (7).png",
+      "extension": ".png",
+      "size_bytes": 37696,
+      "sha256": "f0075695cf029dcb36f4f540372938cf77b94d5f2424d4e194880efbf7b9c16c",
+      "dimensions": {
+        "width": 200,
+        "height": 200
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (7).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (8).png",
+      "name": "pomelli_bdna_image_0417 (8).png",
+      "extension": ".png",
+      "size_bytes": 2718358,
+      "sha256": "b88e93b3ce7cc0b102148481200be22134192337bb45adcec7b5a02024e555c8",
+      "dimensions": {
+        "width": 1750,
+        "height": 1750
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (8).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417 (9).png",
+      "name": "pomelli_bdna_image_0417 (9).png",
+      "extension": ".png",
+      "size_bytes": 182817,
+      "sha256": "5c24a497f808f5d007b4e123ced6dd6556c139a0d7cf9a91ccb804b0dbf437dd",
+      "dimensions": {
+        "width": 400,
+        "height": 400
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417 (9).png"
+    },
+    {
+      "path": "pomelli_bdna_image_0417.png",
+      "name": "pomelli_bdna_image_0417.png",
+      "extension": ".png",
+      "size_bytes": 27484,
+      "sha256": "6993b0f8047a97134e0f8243a932034fc3e06f93dc716f97458a5517b42398f8",
+      "dimensions": {
+        "width": 600,
+        "height": 219
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "pomelli-bdna-image",
+      "classification": "UNUSED",
+      "final_path": "unused/pomelli_bdna_image_0417.png"
+    },
+    {
+      "path": "rejuvenates-icon.png",
+      "name": "rejuvenates-icon.png",
+      "extension": ".png",
+      "size_bytes": 20188,
+      "sha256": "1e2666582244aabe760d950f2963232cde2df726e5e23c656b7561c1989fd74e",
+      "dimensions": {
+        "width": 120,
+        "height": 120
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/rejuvenates-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/rejuvenates-icon.png"
+        }
+      ],
+      "filename_family": "rejuvenates-icon",
+      "classification": "USED",
+      "final_path": "used/icons/rejuvenates-icon.png"
+    },
+    {
+      "path": "repairs-icon.png",
+      "name": "repairs-icon.png",
+      "extension": ".png",
+      "size_bytes": 23531,
+      "sha256": "18d37bd09b7a19fc546888907a97646c8d1db34dea6c412a1dfd714d21141ae4",
+      "dimensions": {
+        "width": 120,
+        "height": 120
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/repairs-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/repairs-icon.png"
+        }
+      ],
+      "filename_family": "repairs-icon",
+      "classification": "USED",
+      "final_path": "used/icons/repairs-icon.png"
+    },
+    {
+      "path": "reviews resources/015d5b52-1f31-498f-8af9-0f236a28f136.svg",
+      "name": "015d5b52-1f31-498f-8af9-0f236a28f136.svg",
+      "extension": ".svg",
+      "size_bytes": 62837,
+      "sha256": "85bd89401a7f5d3852b1679dab5d08b9a37ad6d4ec4a8e02e30bb46b106929ec",
+      "dimensions": {
+        "width": 108.0,
+        "height": 108.0
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews%20resources/015d5b52-1f31-498f-8af9-0f236a28f136.svg"
+        }
+      ],
+      "filename_family": "015d5b52-1f31-498f-8af9-0f236a28f",
+      "classification": "DUPLICATE_USED",
+      "final_path": "used/testimonials/015d5b52-1f31-498f-8af9-0f236a28f136.svg"
+    },
+    {
+      "path": "reviews resources/1775146292__0__bVX2M86S__HBv66etF8__original.avif",
+      "name": "1775146292__0__bVX2M86S__HBv66etF8__original.avif",
+      "extension": ".avif",
+      "size_bytes": 2857,
+      "sha256": "ff51ab018e7f0c91b1018c4267be174b48c5b64521526872aeb189e63223671f",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146292-0-bvx2m86s-hbv66etf8-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146292__0__bVX2M86S__HBv66etF8__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146293__0__8mRZWarE__ZpmKIuRge__original.avif",
+      "name": "1775146293__0__8mRZWarE__ZpmKIuRge__original.avif",
+      "extension": ".avif",
+      "size_bytes": 5605,
+      "sha256": "29676f08278b15ff7e129df1bb24efedf163a2e64e416c31da7c013df5e942e3",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146293-0-8mrzware-zpmkiurge-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146293__0__8mRZWarE__ZpmKIuRge__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146294__0__dvgtc0Fw__5VVBcKCoB__original.avif",
+      "name": "1775146294__0__dvgtc0Fw__5VVBcKCoB__original.avif",
+      "extension": ".avif",
+      "size_bytes": 4165,
+      "sha256": "9ffe31aafbf56d1c733b3aef1b0fc4e43aaedbbeac564db023b9c04b21bdc056",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146294-0-dvgtc0fw-5vvbckcob-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146294__0__dvgtc0Fw__5VVBcKCoB__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146295__0__vgwwbLTZ__QbehzQ7QU__original.avif",
+      "name": "1775146295__0__vgwwbLTZ__QbehzQ7QU__original.avif",
+      "extension": ".avif",
+      "size_bytes": 9139,
+      "sha256": "c6d59a5b22fe3d681963b8fdbd1897314a2121746d40fc43b667dbd0c37084fc",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146295-0-vgwwbltz-qbehzq7qu-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146295__0__vgwwbLTZ__QbehzQ7QU__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146304__0__DjoPNXVG__b-BT57E-g3__original.avif",
+      "name": "1775146304__0__DjoPNXVG__b-BT57E-g3__original.avif",
+      "extension": ".avif",
+      "size_bytes": 3071,
+      "sha256": "9b27adddeed9cff47332fc76e55bcb96cda1418d7b1215bff516dd5ace0f675b",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146304-0-djopnxvg-b-bt57e-g3-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146304__0__DjoPNXVG__b-BT57E-g3__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146304__1__1vU9H2Mi__4QR00B6GpN__original.avif",
+      "name": "1775146304__1__1vU9H2Mi__4QR00B6GpN__original.avif",
+      "extension": ".avif",
+      "size_bytes": 3384,
+      "sha256": "fa1400a87e666c49ab510531c8a468400dedf31c7c191d46761234534870750a",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146304-1-1vu9h2mi-4qr00b6gpn-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146304__1__1vU9H2Mi__4QR00B6GpN__original.avif"
+    },
+    {
+      "path": "reviews resources/1775146304__1___3-onwzE__lS_I9RbdXWc__original.avif",
+      "name": "1775146304__1___3-onwzE__lS_I9RbdXWc__original.avif",
+      "extension": ".avif",
+      "size_bytes": 2616,
+      "sha256": "afb941926c9813fefea3dcb3a5632370a94f92667a3d7c2166f026b13d21676c",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": false,
+      "references": [],
+      "filename_family": "1775146304-1-3-onwze-ls-i9rbdxwc-original",
+      "classification": "REVIEW_NEEDED",
+      "final_path": "review/reviews resources/1775146304__1___3-onwzE__lS_I9RbdXWc__original.avif"
+    },
+    {
+      "path": "reviews/CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif",
+      "name": "CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif",
+      "extension": ".avif",
+      "size_bytes": 10794,
+      "sha256": "e3ca713b971ffb6f54038e529f587e487c612986a9815efc721d77c468204a16",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif"
+        }
+      ],
+      "filename_family": "cleanshot-2025-08-15-at-10-56-31-2x-1-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/CleanShot_2025-08-15_at_10.56.31_2x_1_800x.avif"
+    },
+    {
+      "path": "reviews/CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif",
+      "name": "CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif",
+      "extension": ".avif",
+      "size_bytes": 20566,
+      "sha256": "0a149759e75d9fdc860fbda3f9ca2bd3dd4004e6b07a01b655135ab39b16bfd2",
+      "dimensions": {
+        "width": null,
+        "height": null
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif"
+        }
+      ],
+      "filename_family": "cleanshot-2025-08-15-at-10-59-19-2x-1-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/CleanShot_2025-08-15_at_10.59.19_2x_1_800x.avif"
+    },
+    {
+      "path": "reviews/CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp",
+      "name": "CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp",
+      "extension": ".webp",
+      "size_bytes": 51186,
+      "sha256": "c7c5cb2129fbc90f3980cd260290cb162aadd98c79d1f2c68a1c6da984a2952b",
+      "dimensions": {
+        "width": 394,
+        "height": 700
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp"
+        }
+      ],
+      "filename_family": "cleanshot-2025-08-15-at-11-00-14-2x-1-27f29660-fc3c-4e54-95db-d521ddff5946-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/CleanShot_2025-08-15_at_11.00.14_2x_1_27f29660-fc3c-4e54-95db-d521ddff5946_800x.webp"
+    },
+    {
+      "path": "reviews/person10_800x.webp",
+      "name": "person10_800x.webp",
+      "extension": ".webp",
+      "size_bytes": 71770,
+      "sha256": "3e6201339453a5c4e4aed1210573dd08de5b479937f075853044e72a081658fd",
+      "dimensions": {
+        "width": 800,
+        "height": 1430
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person10_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person10_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person10_800x.webp"
+        }
+      ],
+      "filename_family": "person10-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/person10_800x.webp"
+    },
+    {
+      "path": "reviews/person2_800x.webp",
+      "name": "person2_800x.webp",
+      "extension": ".webp",
+      "size_bytes": 52228,
+      "sha256": "106f1b89fa01016a290155d2cc67f82e98d92bb8612ed25f7c9c126df2fcb755",
+      "dimensions": {
+        "width": 800,
+        "height": 1419
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person2_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person2_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/person2_800x.webp"
+        }
+      ],
+      "filename_family": "person2-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/person2_800x.webp"
+    },
+    {
+      "path": "reviews/v1_800x.webp",
+      "name": "v1_800x.webp",
+      "extension": ".webp",
+      "size_bytes": 42266,
+      "sha256": "9f5c6111babc5a273e6536a5485642a7ede0f089c05fbc425eb0acc7881588fe",
+      "dimensions": {
+        "width": 481,
+        "height": 859
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/v1_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/v1_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/v1_800x.webp"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/reviews/v1_800x.webp"
+        }
+      ],
+      "filename_family": "v1-800x",
+      "classification": "USED",
+      "final_path": "used/testimonials/v1_800x.webp"
+    },
+    {
+      "path": "soothes-icon.png",
+      "name": "soothes-icon.png",
+      "extension": ".png",
+      "size_bytes": 20178,
+      "sha256": "751aedcff96befed5a9b8396e8db2cc8146a568a5feddda633b3772620497866",
+      "dimensions": {
+        "width": 120,
+        "height": 121
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/soothes-icon.png"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/soothes-icon.png"
+        }
+      ],
+      "filename_family": "soothes-icon",
+      "classification": "USED",
+      "final_path": "used/icons/soothes-icon.png"
+    },
+    {
+      "path": "testimonial/mellisa.jpeg",
+      "name": "mellisa.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 35701,
+      "sha256": "9a366d7a97af2854a42dde23c5a5da3a67be7677d4a3b3f5ea678463dff63797",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/mellisa.jpeg"
+        }
+      ],
+      "filename_family": "mellisa",
+      "classification": "USED",
+      "final_path": "used/testimonials/mellisa.jpeg"
+    },
+    {
+      "path": "testimonial/mellisa2.jpeg",
+      "name": "mellisa2.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 49163,
+      "sha256": "df60320de82f534fe813644ee3cb0ae60cdac6948f4220ade7bd4c3c103e08da",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/mellisa2.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/mellisa2.jpeg"
+        }
+      ],
+      "filename_family": "mellisa",
+      "classification": "USED",
+      "final_path": "used/testimonials/mellisa2.jpeg"
+    },
+    {
+      "path": "testimonial/michelle.jpeg",
+      "name": "michelle.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 23953,
+      "sha256": "9875511e973acd19a09ec4f459125d14dd42d4606125cd1dcc165ba60e5a54fa",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/michelle.jpeg"
+        }
+      ],
+      "filename_family": "michelle",
+      "classification": "USED",
+      "final_path": "used/testimonials/michelle.jpeg"
+    },
+    {
+      "path": "testimonial/michelle2.jpeg",
+      "name": "michelle2.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 35456,
+      "sha256": "c068a10189c1a6b4e9dfa257be6cd36713cd043e18699b0bc0f16b2c36bc6208",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/michelle2.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/michelle2.jpeg"
+        }
+      ],
+      "filename_family": "michelle",
+      "classification": "USED",
+      "final_path": "used/testimonials/michelle2.jpeg"
+    },
+    {
+      "path": "testimonial/rachel.jpeg",
+      "name": "rachel.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 33783,
+      "sha256": "73933262d759fe4d677120d95f3f80cc406460c96d386903baf0c5faaa3a656a",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/rachel.jpeg"
+        }
+      ],
+      "filename_family": "rachel",
+      "classification": "USED",
+      "final_path": "used/testimonials/rachel.jpeg"
+    },
+    {
+      "path": "testimonial/rachel2.jpeg",
+      "name": "rachel2.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 25270,
+      "sha256": "45718b07f10f9c8548b05520636605851fe50040677368a796e60353162ef171",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/rachel2.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/rachel2.jpeg"
+        }
+      ],
+      "filename_family": "rachel",
+      "classification": "USED",
+      "final_path": "used/testimonials/rachel2.jpeg"
+    },
+    {
+      "path": "testimonial/sarah.jpeg",
+      "name": "sarah.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 37491,
+      "sha256": "6bacae6635f8677be6bf78e3bc0fb486505ad493c12b6d47f9ecbb13a38129bf",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/sarah.jpeg"
+        }
+      ],
+      "filename_family": "sarah",
+      "classification": "USED",
+      "final_path": "used/testimonials/sarah.jpeg"
+    },
+    {
+      "path": "testimonial/sarah2.jpeg",
+      "name": "sarah2.jpeg",
+      "extension": ".jpeg",
+      "size_bytes": 34385,
+      "sha256": "34f200d320f3c1ba817a36fd300b132a2636417863cea133842501c21fc6e939",
+      "dimensions": {
+        "height": 600,
+        "width": 400
+      },
+      "used": true,
+      "references": [
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/sarah2.jpeg"
+        },
+        {
+          "file": "index.html",
+          "raw": "resources/testimonial/sarah2.jpeg"
+        }
+      ],
+      "filename_family": "sarah",
+      "classification": "USED",
+      "final_path": "used/testimonials/sarah2.jpeg"
+    }
+  ]
+}

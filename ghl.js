@@ -1,3 +1,14 @@
+window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+
+  if (window.location.protocol !== 'file:') {
+    var vercelAnalyticsScript = document.createElement('script');
+    vercelAnalyticsScript.defer = true;
+    vercelAnalyticsScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vercelAnalyticsScript);
+  }
+
 document.addEventListener('DOMContentLoaded', function () {
   var galleryTrack = document.getElementById('gallery-mobile-track');
   var gallerySlides = Array.from(document.querySelectorAll('.gallery-slide'));
