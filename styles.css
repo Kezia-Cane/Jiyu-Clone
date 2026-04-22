@@ -9345,3 +9345,26 @@ video {
     flex-wrap: wrap;
   }
 }
+
+.jar-option[data-jar="3"] .jar-option__image {
+  width: 96px;
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .jar-option[data-jar="3"] .jar-option__image {
+    width: 84px;
+  }
+}
+
+@media (max-width: 430px) {
+  .jar-option[data-jar="3"] .jar-option__image {
+    width: 76px;
+  }
+}
+
+@media (max-width: 360px) {
+  .jar-option[data-jar="3"] .jar-option__image {
+    width: 68px;
+  }
+}

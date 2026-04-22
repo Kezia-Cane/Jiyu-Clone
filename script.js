@@ -13,11 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var autoRefillTitle = document.getElementById('auto-refill-title');
   var autoRefillSub = document.querySelector('.auto-refill__sub');
 
-  var qtyValue = document.getElementById('qty-value');
-  var minusBtn = document.querySelector('.qty-minus');
-  var plusBtn = document.querySelector('.qty-plus');
   var addToCartBtn = document.getElementById('add-to-cart');
-  var cartCountLabel = document.getElementById('cart-count-label');
+  var checkoutCtas = Array.from(document.querySelectorAll('[data-checkout-cta]'));
 
   var accordionItems = document.querySelectorAll('[data-accordion]');
   var faqItems = document.querySelectorAll('[data-faq]');
@@ -39,14 +36,69 @@ document.addEventListener('DOMContentLoaded', function () {
   var ingredientsPrev = document.getElementById('ingredients-prev');
   var ingredientsNext = document.getElementById('ingredients-next');
 
-  var quantity = 1;
-  var cartCount = 0;
   var selectedOption = jarOptions.find(function (option) {
     return option.classList.contains('selected');
   }) || jarOptions[0];
+  var checkoutRoutes = {
+    one_time: {
+      buy1: 'https://my.felinebloom.com/tonerpadsbuy1',
+      buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1getfree',
+      buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2free'
+    },
+    subscription: {
+      buy1: 'https://my.felinebloom.com/tonerpadsbuy1save30monthlydelivery',
+      buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1get1freesave30monthlydelivery',
+      buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2freesave30monthlydelivery'
+    }
+  };
+  var jarToBundle = {
+    '1': 'buy1',
+    '2': 'buy1get1free',
+    '3': 'buy2get2free'
+  };
+
+  if (addToCartBtn && checkoutCtas.indexOf(addToCartBtn) === -1) {
+    checkoutCtas.push(addToCartBtn);
+  }
 
   function formatPrice(value) {
     return '$' + Number(value).toFixed(2);
+  }
+
+  function getPurchaseType() {
+    return autoRefillToggle && autoRefillToggle.checked ? 'subscription' : 'one_time';
+  }
+
+  function getSelectedBundleKey() {
+    if (!selectedOption) {
+      return 'buy1';
+    }
+
+    return selectedOption.dataset.bundle || jarToBundle[selectedOption.dataset.jar] || 'buy1';
+  }
+
+  function getCheckoutUrl() {
+    var purchaseType = getPurchaseType();
+    var bundleKey = getSelectedBundleKey();
+    var routesForType = checkoutRoutes[purchaseType] || checkoutRoutes.one_time;
+
+    return routesForType[bundleKey] || routesForType.buy1;
+  }
+
+  function syncCheckoutCtas() {
+    var purchaseType = getPurchaseType();
+    var bundleKey = getSelectedBundleKey();
+    var checkoutUrl = getCheckoutUrl();
+
+    checkoutCtas.forEach(function (cta) {
+      cta.dataset.checkoutUrl = checkoutUrl;
+      cta.dataset.purchaseType = purchaseType;
+      cta.dataset.bundle = bundleKey;
+
+      if (cta.tagName && cta.tagName.toLowerCase() === 'a') {
+        cta.href = checkoutUrl;
+      }
+    });
   }
 
   function updateGalleryUI(index) {
@@ -165,6 +217,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (selectedOption) {
       updateVariantMedia(selectedOption.dataset.image);
     }
+
+    syncCheckoutCtas();
   }
 
   function setSelectedOption(option) {
@@ -227,43 +281,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateGalleryUI(0);
 
-  if (minusBtn && qtyValue) {
-    minusBtn.addEventListener('click', function () {
-      if (quantity > 1) {
-        quantity -= 1;
-        qtyValue.textContent = String(quantity);
-      }
-    });
-  }
-
-  if (plusBtn && qtyValue) {
-    plusBtn.addEventListener('click', function () {
-      if (quantity < 10) {
-        quantity += 1;
-        qtyValue.textContent = String(quantity);
-      }
-    });
-  }
-
   if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', function () {
+    addToCartBtn.addEventListener('click', function (event) {
       if (addToCartBtn.disabled) {
         return;
       }
 
-      var originalLabel = addToCartBtn.textContent;
-
-      addToCartBtn.disabled = true;
-      addToCartBtn.textContent = 'Adding...';
-
-      window.setTimeout(function () {
-        cartCount += quantity;
-        if (cartCountLabel) {
-          cartCountLabel.textContent = '(' + cartCount + ' in cart)';
-        }
-        addToCartBtn.textContent = originalLabel;
-        addToCartBtn.disabled = false;
-      }, 650);
+      event.preventDefault();
+      syncCheckoutCtas();
+      window.location.href = getCheckoutUrl();
     });
   }
 
