@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function formatPrice(value) {
-    return '$' + Number(value).toFixed(2);
+    var amount = Number(value);
+
+    if (!isFinite(amount)) {
+      return '';
+    }
+
+    return '$' + amount.toFixed(2);
   }
 
   function getPurchaseType() {
@@ -179,7 +185,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var daily = option.querySelector('.price-daily');
       var price = useSubscription ? option.dataset.subscription : option.dataset.regular;
       var comparePrice = useSubscription ? option.dataset.subscriptionCompare : option.dataset.regularCompare;
-      var dailyPrice = useSubscription ? option.dataset.subscriptionDaily : option.dataset.regularDaily;
+      var dailyPrice = useSubscription
+        ? (option.dataset.subscriptionDaily || option.dataset.daily)
+        : (option.dataset.regularDaily || option.dataset.daily);
 
       if (current) {
         current.textContent = formatPrice(price);
@@ -196,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (daily) {
-        if (dailyPrice) {
+        if (dailyPrice && formatPrice(dailyPrice)) {
           daily.textContent = formatPrice(dailyPrice) + ' per day';
           daily.style.display = 'block';
         } else {
@@ -310,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
       header.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
 
       if (icon) {
-        icon.textContent = isOpen ? '+' : '−';
+        icon.textContent = isOpen ? '+' : '\u2212';
       }
     });
   });
