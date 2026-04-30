@@ -147,11 +147,11 @@ ul {
   display: flex;
   gap: 32px;
 }
-.site-nav a {
-  text-decoration: none;
-  color: var(--green-dark);
-  font-size: 14px;
-  font-weight: 600;
+  .site-nav a {
+    text-decoration: none;
+    color: var(--green-dark);
+    font-size: 14px;
+    font-weight: 700;
   letter-spacing: 0;
   transition: color var(--transition);
 }
@@ -1914,11 +1914,11 @@ select {
   gap: 30px;
 }
 
-.site-nav a {
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
+  .site-nav a {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
 
 .site-header__actions {
   gap: 10px;
@@ -11623,11 +11623,11 @@ body.mobile-nav-open {
   gap: 14px;
 }
 
-.mobile-nav__links a {
-  color: var(--green-dark);
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
+  .mobile-nav__links a {
+    color: var(--green-dark);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .mobile-nav__links a[aria-disabled="true"] {
