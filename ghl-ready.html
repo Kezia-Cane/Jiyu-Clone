@@ -6424,7 +6424,7 @@ select {
   height: 263px;
 }
 
-.social-play {
+.media-play-tile .play-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6436,7 +6436,7 @@ select {
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
 }
 
-.social-play::before {
+.media-play-tile .play-icon::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -6449,12 +6449,12 @@ select {
   border-left: 11px solid var(--brand-green);
 }
 
-.social-tile--large .social-play {
+.social-tile--large.media-play-tile .play-icon {
   width: 40px;
   height: 40px;
 }
 
-.social-tile--large .social-play::before {
+.social-tile--large.media-play-tile .play-icon::before {
   border-top-width: 8px;
   border-bottom-width: 8px;
   border-left-width: 12px;
@@ -6600,12 +6600,12 @@ select {
     height: min(53vw, 224px);
   }
 
-  .social-play {
+  .media-play-tile .play-icon {
     width: 34px;
     height: 34px;
   }
 
-  .social-play::before {
+  .media-play-tile .play-icon::before {
     border-top-width: 6px;
     border-bottom-width: 6px;
     border-left-width: 10px;
@@ -7814,7 +7814,8 @@ video {
   object-fit: cover;
 }
 
-.social-tile.is-playing .social-play {
+.social-tile.is-playing .play-icon,
+.media-play-tile.is-playing .play-icon {
   opacity: 0;
   pointer-events: none;
 }
@@ -8929,15 +8930,15 @@ video {
     object-fit: cover;
   }
 
-  .social-play,
-  .social-tile--large .social-play {
+  .media-play-tile .play-icon,
+  .social-tile--large.media-play-tile .play-icon {
     width: 46px;
     height: 46px;
     background: rgba(255, 255, 255, 0.92);
   }
 
-  .social-play::before,
-  .social-tile--large .social-play::before {
+  .media-play-tile .play-icon::before,
+  .social-tile--large.media-play-tile .play-icon::before {
     border-top-width: 9px;
     border-bottom-width: 9px;
     border-left-width: 14px;
@@ -9332,10 +9333,10 @@ video {
     </a>
     <nav class="site-nav">
       <a href="#product-info">SHOP</a>
-      <a href="https://my.felinebloom.com/about-us-7099">ABOUT US</a>
+      <a href="https://glow.soulalchemy528.com/about-us-7099">ABOUT US</a>
       <a href="#newsletter-section">GLOW CLUB</a>
-      <a href="https://my.felinebloom.com/faq-6627">FAQS</a>
-      <a href="https://my.felinebloom.com/contactus-9977">CONTACT US</a>
+      <a href="https://glow.soulalchemy528.com/faq-6627">FAQS</a>
+      <a href="https://glow.soulalchemy528.com/contactus-9977">CONTACT US</a>
     </nav>
     <div class="site-header__actions">
       <button class="header-icon" aria-label="Account" type="button">
@@ -9612,7 +9613,7 @@ video {
       </div>
 
       <div class="purchase-row">
-        <button class="add-to-cart-btn" id="add-to-cart" type="button" data-checkout-cta data-purchase-type="subscription" data-bundle="buy1get1free" data-checkout-url="https://my.felinebloom.com/tonerpadsbuy1get1freesave30monthlydelivery">Add to cart</button>
+        <button class="add-to-cart-btn" id="add-to-cart" type="button" data-checkout-cta data-purchase-type="subscription" data-bundle="buy1get1free" data-checkout-url="https://glow.soulalchemy528.com/tonerpadsbuy1get1freesave30monthlydelivery">Add to cart</button>
       </div>
 
       <div class="guarantee-block">
@@ -10372,7 +10373,7 @@ video {
         <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e698db92b8c1ad71127b0b.webp">
           <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/7e22461d17f9411a8c7138ab2ea31142/7e22461d17f9411a8c7138ab2ea31142.HD-1080p-2.5Mbps-64552168.mp4?v=0" type="video/mp4">
         </video>
-        <span class="social-play" aria-hidden="true"></span>
+        <span class="play-icon" aria-hidden="true"></span>
         <div class="social-comment-card" aria-hidden="true">
           <div class="social-comment-card__header">
             <span class="social-comment-avatar">S</span>
@@ -10394,25 +10395,25 @@ video {
           <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e6997ac56ad2790845d34d.jpg">
             <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/d4bab336b978404ab4717de721df3554/d4bab336b978404ab4717de721df3554.HD-1080p-2.5Mbps-64552174.mp4?v=0" type="video/mp4">
           </video>
-          <span class="social-play" aria-hidden="true"></span>
+          <span class="play-icon" aria-hidden="true"></span>
         </button>
         <button class="social-tile social-tile--small media-play-tile" type="button" aria-label="Play JiYu social review video 2">
           <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e698db38381eafa8f34ed0.webp">
             <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/7866274726f343d99484adda7cb9fc1a/7866274726f343d99484adda7cb9fc1a.HD-1080p-2.5Mbps-64552175.mp4?v=0" type="video/mp4">
           </video>
-          <span class="social-play" aria-hidden="true"></span>
+          <span class="play-icon" aria-hidden="true"></span>
         </button>
         <button class="social-tile social-tile--small media-play-tile" type="button" aria-label="Play JiYu social review video 3">
           <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e698db3ea93d9dd2ea49fb.webp">
             <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/9814d263984d40208e53218ce2c353ee/9814d263984d40208e53218ce2c353ee.HD-1080p-2.5Mbps-64552169.mp4?v=0" type="video/mp4">
           </video>
-          <span class="social-play" aria-hidden="true"></span>
+          <span class="play-icon" aria-hidden="true"></span>
         </button>
         <button class="social-tile social-tile--small media-play-tile" type="button" aria-label="Play JiYu social review video 4">
           <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e6997a2c135a8c83b759f8.jpg">
             <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/78563b79b7ca4c0b9e2d79702d126a35/78563b79b7ca4c0b9e2d79702d126a35.HD-1080p-2.5Mbps-64552170.mp4?v=0" type="video/mp4">
           </video>
-          <span class="social-play" aria-hidden="true"></span>
+          <span class="play-icon" aria-hidden="true"></span>
         </button>
       </div>
 
@@ -10420,7 +10421,7 @@ video {
         <video preload="metadata" playsinline loop poster="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69e698db2c135a8c83b7385b.webp">
           <source src="https://www.jiyuskin.com/cdn/shop/videos/c/vp/9814d263984d40208e53218ce2c353ee/9814d263984d40208e53218ce2c353ee.HD-1080p-2.5Mbps-64552169.mp4?v=0" type="video/mp4">
         </video>
-        <span class="social-play" aria-hidden="true"></span>
+        <span class="play-icon" aria-hidden="true"></span>
       </button>
     </div>
     <span class="social-handle-pill" aria-label="JiYu social handle">@JIYUSKIN</span>
@@ -10478,8 +10479,8 @@ video {
     <div class="footer-col footer-col--about">
       <h4>About Us</h4>
       <ul>
-        <li><a href="https://my.felinebloom.com/about-us-7099">OUR STORY</a></li>
-        <li><a href="https://my.felinebloom.com/faq-6627">FAQ</a></li>
+        <li><a href="https://glow.soulalchemy528.com/about-us-7099">OUR STORY</a></li>
+        <li><a href="https://glow.soulalchemy528.com/faq-6627">FAQ</a></li>
         <li><a href="#clinical-ingredients">RESOURCES</a></li>
       </ul>
     </div>
@@ -10487,11 +10488,11 @@ video {
     <div class="footer-col footer-col--help">
       <h4>Help</h4>
       <ul>
-        <li><a href="https://my.felinebloom.com/contactus-9977">CONTACT US</a></li>
-        <li><a href="https://my.felinebloom.com/shipping-policy-618246-2998">SHIPPING POLICY</a></li>
-        <li><a href="https://my.felinebloom.com/refund-policy-9532">REFUND/RETURN POLICY</a></li>
-        <li><a href="https://my.felinebloom.com/privacy-policy-918566">PRIVACY POLICY</a></li>
-        <li><a href="https://my.felinebloom.com/terms-of-service-670851">TERMS OF SERVICE</a></li>
+        <li><a href="https://glow.soulalchemy528.com/contactus-9977">CONTACT US</a></li>
+        <li><a href="https://glow.soulalchemy528.com/shipping-policy-618246-2998">SHIPPING POLICY</a></li>
+        <li><a href="https://glow.soulalchemy528.com/refund-policy-9532">REFUND/RETURN POLICY</a></li>
+        <li><a href="https://glow.soulalchemy528.com/privacy-policy-918566">PRIVACY POLICY</a></li>
+        <li><a href="https://glow.soulalchemy528.com/terms-of-service-670851">TERMS OF SERVICE</a></li>
       </ul>
     </div>
   </div>
@@ -10555,14 +10556,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }) || jarOptions[0];
       var checkoutRoutes = {
         one_time: {
-          buy1: 'https://my.felinebloom.com/tonerpadsbuy1',
-          buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1getfree',
-          buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2free'
+          buy1: 'https://glow.soulalchemy528.com/tonerpadsbuy1',
+          buy1get1free: 'https://glow.soulalchemy528.com/tonerpadsbuy1getfree',
+          buy2get2free: 'https://glow.soulalchemy528.com/tonerpadsbuy2get2free'
         },
         subscription: {
-          buy1: 'https://my.felinebloom.com/tonerpadsbuy1save30monthlydelivery',
-          buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1get1freesave30monthlydelivery',
-          buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2freesave30monthlydelivery'
+          buy1: 'https://glow.soulalchemy528.com/tonerpadsbuy1save30monthlydelivery',
+          buy1get1free: 'https://glow.soulalchemy528.com/tonerpadsbuy1get1freesave30monthlydelivery',
+          buy2get2free: 'https://glow.soulalchemy528.com/tonerpadsbuy2get2freesave30monthlydelivery'
         }
       };
       var jarToBundle = {
@@ -11012,45 +11013,49 @@ document.addEventListener('DOMContentLoaded', function () {
       syncResultDots();
       showResultSlide(0, 0);
     
-      videoThumbs.forEach(function (thumb) {
-        var video = thumb.querySelector('video');
+      function initVideoCards(cards) {
+        cards.forEach(function (thumb) {
+          var video = thumb.querySelector('video');
     
-        if (!video) {
-          return;
-        }
+          if (!video) {
+            return;
+          }
     
-        thumb.addEventListener('click', function () {
-          var isPlaying = !video.paused;
+          thumb.addEventListener('click', function () {
+            var isPlaying = !video.paused;
     
-          videoThumbs.forEach(function (otherThumb) {
-            var otherVideo = otherThumb.querySelector('video');
-            if (otherVideo && otherVideo !== video) {
-              otherVideo.pause();
-              otherThumb.classList.remove('is-playing');
+            cards.forEach(function (otherThumb) {
+              var otherVideo = otherThumb.querySelector('video');
+              if (otherVideo && otherVideo !== video) {
+                otherVideo.pause();
+                otherThumb.classList.remove('is-playing');
+              }
+            });
+    
+            if (isPlaying) {
+              video.pause();
+              thumb.classList.remove('is-playing');
+            } else {
+              video.removeAttribute('muted');
+              video.muted = false;
+              video.play().catch(function () {
+                return null;
+              });
+              thumb.classList.add('is-playing');
             }
           });
     
-          if (isPlaying) {
-            video.pause();
+          video.addEventListener('pause', function () {
             thumb.classList.remove('is-playing');
-          } else {
-            video.removeAttribute('muted');
-            video.muted = false;
-            video.play().catch(function () {
-              return null;
-            });
+          });
+    
+          video.addEventListener('play', function () {
             thumb.classList.add('is-playing');
-          }
+          });
         });
+      }
     
-        video.addEventListener('pause', function () {
-          thumb.classList.remove('is-playing');
-        });
-    
-        video.addEventListener('play', function () {
-          thumb.classList.add('is-playing');
-        });
-      });
+      initVideoCards(videoThumbs);
     
       if (ingredientsRow) {
         var isDown = false;

@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var addToCartBtn = document.getElementById('add-to-cart');
   var checkoutCtas = Array.from(document.querySelectorAll('[data-checkout-cta]'));
+  var checkoutRoutesApi = window.JiyuCheckoutRoutes;
 
   var accordionItems = document.querySelectorAll('[data-accordion]');
   var faqItems = document.querySelectorAll('[data-faq]');
@@ -43,22 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var selectedOption = jarOptions.find(function (option) {
     return option.classList.contains('selected');
   }) || jarOptions[0];
-  var checkoutRoutes = {
-    one_time: {
-      buy1: 'https://my.felinebloom.com/tonerpadsbuy1',
-      buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1getfree',
-      buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2free'
-    },
-    subscription: {
-      buy1: 'https://my.felinebloom.com/tonerpadsbuy1save30monthlydelivery',
-      buy1get1free: 'https://my.felinebloom.com/tonerpadsbuy1get1freesave30monthlydelivery',
-      buy2get2free: 'https://my.felinebloom.com/tonerpadsbuy2get2freesave30monthlydelivery'
-    }
-  };
   var jarToBundle = {
     '1': 'buy1',
-    '2': 'buy1get1free',
-    '3': 'buy2get2free'
+    '2': 'buy1Get1',
+    '3': 'buy2Get2'
+  };
+  var bundleAliases = {
+    buy1: 'buy1',
+    buy1Get1: 'buy1Get1',
+    buy1get1free: 'buy1Get1',
+    buy2Get2: 'buy2Get2',
+    buy2get2free: 'buy2Get2'
   };
 
   if (addToCartBtn && checkoutCtas.indexOf(addToCartBtn) === -1) {
@@ -76,23 +72,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function getPurchaseType() {
-    return autoRefillToggle && autoRefillToggle.checked ? 'subscription' : 'one_time';
+    return autoRefillToggle && autoRefillToggle.checked ? 'subscription' : 'oneTime';
   }
 
   function getSelectedBundleKey() {
-    if (!selectedOption) {
+    var currentSelectedOption = jarOptions.find(function (option) {
+      return option.classList.contains('selected');
+    }) || selectedOption;
+
+    if (!currentSelectedOption) {
       return 'buy1';
     }
 
-    return selectedOption.dataset.bundle || jarToBundle[selectedOption.dataset.jar] || 'buy1';
+    var rawBundleKey = currentSelectedOption.dataset.option || currentSelectedOption.dataset.bundle || jarToBundle[currentSelectedOption.dataset.jar];
+
+    return bundleAliases[rawBundleKey] || 'buy1';
   }
 
   function getCheckoutUrl() {
     var purchaseType = getPurchaseType();
     var bundleKey = getSelectedBundleKey();
-    var routesForType = checkoutRoutes[purchaseType] || checkoutRoutes.one_time;
 
-    return routesForType[bundleKey] || routesForType.buy1;
+    if (!checkoutRoutesApi || typeof checkoutRoutesApi.resolveCheckoutUrl !== 'function') {
+      return '';
+    }
+
+    return checkoutRoutesApi.resolveCheckoutUrl(purchaseType, bundleKey);
   }
 
   function syncCheckoutCtas() {
@@ -104,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
       cta.dataset.checkoutUrl = checkoutUrl;
       cta.dataset.purchaseType = purchaseType;
       cta.dataset.bundle = bundleKey;
+      cta.dataset.option = bundleKey;
 
       if (cta.tagName && cta.tagName.toLowerCase() === 'a') {
         cta.href = checkoutUrl;
@@ -637,45 +643,49 @@ document.addEventListener('DOMContentLoaded', function () {
   syncResultDots();
   showResultSlide(0, 0);
 
-  videoThumbs.forEach(function (thumb) {
-    var video = thumb.querySelector('video');
+  function initVideoCards(cards) {
+    cards.forEach(function (thumb) {
+      var video = thumb.querySelector('video');
 
-    if (!video) {
-      return;
-    }
+      if (!video) {
+        return;
+      }
 
-    thumb.addEventListener('click', function () {
-      var isPlaying = !video.paused;
+      thumb.addEventListener('click', function () {
+        var isPlaying = !video.paused;
 
-      videoThumbs.forEach(function (otherThumb) {
-        var otherVideo = otherThumb.querySelector('video');
-        if (otherVideo && otherVideo !== video) {
-          otherVideo.pause();
-          otherThumb.classList.remove('is-playing');
+        cards.forEach(function (otherThumb) {
+          var otherVideo = otherThumb.querySelector('video');
+          if (otherVideo && otherVideo !== video) {
+            otherVideo.pause();
+            otherThumb.classList.remove('is-playing');
+          }
+        });
+
+        if (isPlaying) {
+          video.pause();
+          thumb.classList.remove('is-playing');
+        } else {
+          video.removeAttribute('muted');
+          video.muted = false;
+          video.play().catch(function () {
+            return null;
+          });
+          thumb.classList.add('is-playing');
         }
       });
 
-      if (isPlaying) {
-        video.pause();
+      video.addEventListener('pause', function () {
         thumb.classList.remove('is-playing');
-      } else {
-        video.removeAttribute('muted');
-        video.muted = false;
-        video.play().catch(function () {
-          return null;
-        });
+      });
+
+      video.addEventListener('play', function () {
         thumb.classList.add('is-playing');
-      }
+      });
     });
+  }
 
-    video.addEventListener('pause', function () {
-      thumb.classList.remove('is-playing');
-    });
-
-    video.addEventListener('play', function () {
-      thumb.classList.add('is-playing');
-    });
-  });
+  initVideoCards(videoThumbs);
 
   if (ingredientsRow) {
     var isDown = false;
