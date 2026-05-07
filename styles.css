@@ -9863,6 +9863,33 @@ video {
   font-weight: 700;
 }
 
+.contact-form-panel {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 36px 44px;
+  border: 1.5px solid rgba(0, 110, 55, 0.18);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(253, 250, 240, 0.98) 0%, rgba(248, 244, 231, 0.96) 100%);
+  box-shadow: 0 20px 48px rgba(0, 110, 55, 0.08);
+}
+
+.contact-form-panel__intro {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.contact-form-shell {
+  height: 980px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.contact-form-shell iframe {
+  display: block;
+}
+
 .support-card {
   max-width: 860px;
   margin: 88px auto 0;
@@ -10875,6 +10902,15 @@ video {
   .legal-block__text p,
   .legal-block__text li {
     font-size: 16px;
+  }
+
+  .contact-form-panel {
+    padding: 28px 18px 24px;
+    border-radius: 16px;
+  }
+
+  .contact-form-shell {
+    height: 1180px;
   }
 
   .legal-block {

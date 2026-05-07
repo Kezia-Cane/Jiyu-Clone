@@ -87,8 +87,8 @@ assert.ok(
   'Desktop or mobile navigation on the homepage should link to /faq.'
 );
 assert.ok(
-  pages['index.html'].includes('href="https://glow.soulalchemy528.com/contact-us"'),
-  'Desktop or mobile navigation on the homepage should link to the live contact-us URL.'
+  pages['index.html'].includes('href="/contact"'),
+  'Desktop or mobile navigation on the homepage should link to /contact.'
 );
 assert.ok(
   pages['index.html'].includes('href="/shipping-policy"'),
@@ -127,16 +127,24 @@ assert.ok(
   'About page should send homepage shop links to the live tryglow domain.'
 );
 assert.ok(
-  pages['contact.html'].includes('support@jiyuskin.com'),
-  'Contact page should provide the support email.'
+  pages['contact.html'].includes('https://api.leadconnectorhq.com/widget/form/ObqCaTLA2e5XepeDlLWO'),
+  'Contact page should embed the GHL contact form iframe.'
+);
+assert.ok(
+  pages['contact.html'].includes('https://link.msgsndr.com/js/form_embed.js'),
+  'Contact page should load the GHL form embed script.'
+);
+assert.ok(
+  pages['contact.html'].includes('data-form-id="ObqCaTLA2e5XepeDlLWO"'),
+  'Contact page should include the requested GHL form metadata.'
 );
 assert.ok(
   pages['terms-of-service.html'].includes('href="/refund-return-policy"'),
   'Terms page should reference the clean refund policy route inline.'
 );
 assert.ok(
-  pages['thankyou.html'].includes('href="https://glow.soulalchemy528.com/contact-us"'),
-  'Thank you page should point to the live contact-us URL.'
+  pages['thankyou.html'].includes('href="/contact"'),
+  'Thank you page should point to /contact.'
 );
 assert.equal(
   productVideoButtons.length,
@@ -216,6 +224,11 @@ publishedPages.forEach((fileName) => {
     false,
     fileName + ' should not contain the old glow toner-pads homepage URL.'
   );
+  assert.equal(
+    content.includes('https://glow.soulalchemy528.com/contact-us'),
+    false,
+    fileName + ' should not contain the old external contact-us link.'
+  );
 });
 
 const internalHtmlPatterns = [
@@ -247,11 +260,6 @@ publishedPages.forEach((fileName) => {
   assert.ok(
     content.includes('WY 82609 USA'),
     fileName + ' should include the updated footer address line 2.'
-  );
-  assert.equal(
-    content.includes('href="/contact"'),
-    false,
-    fileName + ' should not contain the old /contact link target.'
   );
 });
 
