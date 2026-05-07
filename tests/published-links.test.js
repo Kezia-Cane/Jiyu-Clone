@@ -46,6 +46,7 @@ const faqSocialVideoPairs = Array.from(
   })
 );
 const vercelConfigPath = path.join(projectRoot, 'vercel.json');
+const stylesContent = fs.readFileSync(path.join(projectRoot, 'styles.css'), 'utf8');
 assert.ok(
   fs.existsSync(vercelConfigPath),
   'Project should include a vercel.json config for clean Vercel routes.'
@@ -181,6 +182,18 @@ assert.ok(
   pages['index.html'].includes('src="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69f90bdfca15d8ddc43ba6e0.mp4"'),
   'Homepage should include the requested replacement review video source.'
 );
+assert.ok(
+  pages['index.html'].includes('<figure class="gallery-stats-image gallery-stats-image--full-text">'),
+  'Homepage stats image card should opt into the non-cropping full-text treatment.'
+);
+assert.ok(
+  stylesContent.includes('.gallery-stats-image.gallery-stats-image--full-text img'),
+  'styles.css should include a specific rule for the full-text stats image.'
+);
+assert.ok(
+  stylesContent.includes('object-fit: contain;'),
+  'styles.css should allow the full-text stats image to render without cropping.'
+);
 
 publishedPages.forEach((fileName) => {
   const content = pages[fileName];
@@ -213,6 +226,15 @@ publishedPages.forEach((fileName) => {
       fileName + ' should not contain stale internal .html links (' + pattern + ').'
     );
   });
+
+  assert.ok(
+    content.includes('Silmea LLC 5830 E 2nd Street Suite 7000, Unit #78521 Casper'),
+    fileName + ' should include the updated footer address line 1.'
+  );
+  assert.ok(
+    content.includes('WY 82609 USA'),
+    fileName + ' should include the updated footer address line 2.'
+  );
 });
 
 const scriptContent = fs.readFileSync(path.join(projectRoot, 'script.js'), 'utf8');

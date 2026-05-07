@@ -12251,6 +12251,16 @@ body.mobile-nav-open {
   object-fit: cover;
 }
 
+.gallery-stats-image.gallery-stats-image--full-text {
+  aspect-ratio: auto;
+}
+
+.gallery-stats-image.gallery-stats-image--full-text img {
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
 .gallery-mobile-track {
   overflow: hidden;
 }
