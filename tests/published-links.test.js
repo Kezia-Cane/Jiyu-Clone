@@ -31,6 +31,20 @@ const socialVideoPairs = Array.from(
     src: match[2]
   })
 );
+const aboutSocialVideoPairs = Array.from(
+  pages['about.html'].matchAll(/<button class="social-tile[\s\S]*?<video[\s\S]*?poster="([^"]+)"[\s\S]*?<source src="([^"]+)"/g),
+  (match) => ({
+    poster: match[1],
+    src: match[2]
+  })
+);
+const faqSocialVideoPairs = Array.from(
+  pages['faq.html'].matchAll(/<button class="social-tile[\s\S]*?<video[\s\S]*?poster="([^"]+)"[\s\S]*?<source src="([^"]+)"/g),
+  (match) => ({
+    poster: match[1],
+    src: match[2]
+  })
+);
 const vercelConfigPath = path.join(projectRoot, 'vercel.json');
 assert.ok(
   fs.existsSync(vercelConfigPath),
@@ -135,6 +149,29 @@ productVideoButtons.forEach((buttonMarkup, index) => {
     buttonMarkup.includes('src="' + expectedPair.src + '"'),
     'Product review video ' + (index + 1) + ' should mirror social section source ' + (index + 1) + '.'
   );
+});
+[
+  ['about.html', aboutSocialVideoPairs],
+  ['faq.html', faqSocialVideoPairs]
+].forEach(([fileName, pagePairs]) => {
+  assert.equal(
+    pagePairs.length,
+    socialVideoPairs.length,
+    fileName + ' should expose the same number of social videos as the homepage.'
+  );
+
+  pagePairs.forEach((pair, index) => {
+    assert.equal(
+      pair.poster,
+      socialVideoPairs[index].poster,
+      fileName + ' should mirror homepage social poster ' + (index + 1) + '.'
+    );
+    assert.equal(
+      pair.src,
+      socialVideoPairs[index].src,
+      fileName + ' should mirror homepage social source ' + (index + 1) + '.'
+    );
+  });
 });
 assert.ok(
   pages['index.html'].includes('aria-label="Play customer review video 1"'),
