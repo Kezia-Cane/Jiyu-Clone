@@ -139,6 +139,30 @@ assert.ok(
   'Contact page should include the requested GHL form metadata.'
 );
 assert.ok(
+  pages['contact.html'].includes('class="contact-care-strip"'),
+  'Contact page should include the branded clinical support strip.'
+);
+assert.ok(
+  pages['contact.html'].includes('class="contact-form-layout"'),
+  'Contact page should wrap the form in the premium contact layout.'
+);
+assert.ok(
+  pages['contact.html'].includes('class="contact-form-card__frame"'),
+  'Contact page should present the GHL form inside the upgraded card frame.'
+);
+assert.ok(
+  stylesContent.includes('.contact-care-strip'),
+  'styles.css should include the branded contact support strip styles.'
+);
+assert.ok(
+  stylesContent.includes('.contact-form-layout'),
+  'styles.css should include the premium contact layout styles.'
+);
+assert.ok(
+  stylesContent.includes('.contact-form-card__frame'),
+  'styles.css should include the upgraded contact form frame styles.'
+);
+assert.ok(
   pages['terms-of-service.html'].includes('href="/refund-return-policy"'),
   'Terms page should reference the clean refund policy route inline.'
 );
