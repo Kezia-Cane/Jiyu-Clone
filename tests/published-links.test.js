@@ -79,6 +79,10 @@ assert.ok(
   'Desktop or mobile navigation on the homepage should link to /about.'
 );
 assert.ok(
+  pages['index.html'].includes('href="https://tryglow.soulalchemy528.com/"'),
+  'Homepage should point brand home links to the live tryglow domain.'
+);
+assert.ok(
   pages['index.html'].includes('href="/faq"'),
   'Desktop or mobile navigation on the homepage should link to /faq.'
 );
@@ -117,6 +121,10 @@ assert.ok(
 assert.ok(
   pages['about.html'].includes('href="/faq"'),
   'About page links should point to the clean /faq route.'
+);
+assert.ok(
+  pages['about.html'].includes('href="https://tryglow.soulalchemy528.com/#product-info"'),
+  'About page should send homepage shop links to the live tryglow domain.'
 );
 assert.ok(
   pages['contact.html'].includes('support@jiyuskin.com'),
@@ -202,6 +210,11 @@ publishedPages.forEach((fileName) => {
     content.includes('my.felinebloom.com'),
     false,
     fileName + ' should not contain old FelineBloom domain links.'
+  );
+  assert.equal(
+    content.includes('https://glow.soulalchemy528.com/toner-pads'),
+    false,
+    fileName + ' should not contain the old glow toner-pads homepage URL.'
   );
 });
 
