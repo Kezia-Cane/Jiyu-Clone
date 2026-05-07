@@ -6,6 +6,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const publishedPages = [
   'index.html',
   'about.html',
+  'contact.html',
   'faq.html',
   'privacy-policy.html',
   'terms-of-service.html',
@@ -21,6 +22,33 @@ const pages = Object.fromEntries(
     fs.readFileSync(path.join(projectRoot, fileName), 'utf8')
   ])
 );
+const vercelConfigPath = path.join(projectRoot, 'vercel.json');
+assert.ok(
+  fs.existsSync(vercelConfigPath),
+  'Project should include a vercel.json config for clean Vercel routes.'
+);
+const vercelConfig = JSON.parse(fs.readFileSync(vercelConfigPath, 'utf8'));
+
+assert.ok(
+  Array.isArray(vercelConfig.rewrites),
+  'vercel.json should define same-app rewrites for published pages.'
+);
+[
+  ['/about', '/about.html'],
+  ['/contact', '/contact.html'],
+  ['/faq', '/faq.html'],
+  ['/privacy-policy', '/privacy-policy.html'],
+  ['/terms-of-service', '/terms-of-service.html'],
+  ['/shipping-policy', '/shipping-policy.html'],
+  ['/refund-return-policy', '/refund-return-policy.html'],
+  ['/checkout', '/checkout.html'],
+  ['/thankyou', '/thankyou.html']
+].forEach(([source, destination]) => {
+  assert.ok(
+    vercelConfig.rewrites.some((rewrite) => rewrite.source === source && rewrite.destination === destination),
+    'vercel.json should rewrite ' + source + ' to ' + destination + '.'
+  );
+});
 
 assert.ok(
   pages['index.html'].includes('href="/about"'),
@@ -65,6 +93,10 @@ assert.ok(
 assert.ok(
   pages['about.html'].includes('href="/faq"'),
   'About page links should point to the clean /faq route.'
+);
+assert.ok(
+  pages['contact.html'].includes('support@jiyuskin.com'),
+  'Contact page should provide the support email.'
 );
 assert.ok(
   pages['terms-of-service.html'].includes('href="/refund-return-policy"'),
