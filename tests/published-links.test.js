@@ -22,6 +22,15 @@ const pages = Object.fromEntries(
     fs.readFileSync(path.join(projectRoot, fileName), 'utf8')
   ])
 );
+
+const productVideoButtons = pages['index.html'].match(/<button class="video-thumb"[\s\S]*?<\/button>/g) || [];
+const socialVideoPairs = Array.from(
+  pages['index.html'].matchAll(/<button class="social-tile[\s\S]*?<video[\s\S]*?poster="([^"]+)"[\s\S]*?<source src="([^"]+)"/g),
+  (match) => ({
+    poster: match[1],
+    src: match[2]
+  })
+);
 const vercelConfigPath = path.join(projectRoot, 'vercel.json');
 assert.ok(
   fs.existsSync(vercelConfigPath),
@@ -106,6 +115,35 @@ assert.ok(
   pages['thankyou.html'].includes('href="/contact"'),
   'Thank you page should point to the clean /contact route.'
 );
+assert.equal(
+  productVideoButtons.length,
+  5,
+  'Homepage should expose five customer review video cards near the product section.'
+);
+assert.ok(
+  socialVideoPairs.length >= 5,
+  'Homepage social section should expose at least five video poster/source pairs.'
+);
+productVideoButtons.forEach((buttonMarkup, index) => {
+  const expectedPair = socialVideoPairs[index];
+
+  assert.ok(
+    buttonMarkup.includes('poster="' + expectedPair.poster + '"'),
+    'Product review video ' + (index + 1) + ' should mirror social section poster ' + (index + 1) + '.'
+  );
+  assert.ok(
+    buttonMarkup.includes('src="' + expectedPair.src + '"'),
+    'Product review video ' + (index + 1) + ' should mirror social section source ' + (index + 1) + '.'
+  );
+});
+assert.ok(
+  pages['index.html'].includes('aria-label="Play customer review video 1"'),
+  'Homepage should include the first customer review video card.'
+);
+assert.ok(
+  pages['index.html'].includes('src="https://assets.cdn.filesafe.space/LiPqlEzIjSLGJAzwjVeD/media/69f90bdfca15d8ddc43ba6e0.mp4"'),
+  'Homepage should include the requested replacement review video source.'
+);
 
 publishedPages.forEach((fileName) => {
   const content = pages[fileName];
@@ -145,6 +183,10 @@ const scriptContent = fs.readFileSync(path.join(projectRoot, 'script.js'), 'utf8
 assert.ok(
   scriptContent.includes('JiyuCheckoutRoutes'),
   'script.js should consume the shared checkout routes API.'
+);
+assert.ok(
+  scriptContent.includes('video.load();'),
+  'script.js should reload media before playback for unreliable video tiles.'
 );
 assert.equal(
   scriptContent.includes('tonerpadsbuy'),

@@ -644,6 +644,24 @@ document.addEventListener('DOMContentLoaded', function () {
   showResultSlide(0, 0);
 
   function initVideoCards(cards) {
+    function startVideoPlayback(video) {
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        // Some browsers can throw before metadata is ready; playback should still continue.
+      }
+
+      // Reload the clip before playback so tiles recover cleanly from stale metadata states.
+      video.load();
+
+      return video.play().catch(function () {
+        video.load();
+        return video.play().catch(function () {
+          return null;
+        });
+      });
+    }
+
     cards.forEach(function (thumb) {
       var video = thumb.querySelector('video');
 
@@ -668,9 +686,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           video.removeAttribute('muted');
           video.muted = false;
-          video.play().catch(function () {
-            return null;
-          });
+          startVideoPlayback(video);
           thumb.classList.add('is-playing');
         }
       });
