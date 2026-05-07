@@ -83,8 +83,8 @@ assert.ok(
   'Desktop or mobile navigation on the homepage should link to /faq.'
 );
 assert.ok(
-  pages['index.html'].includes('href="/contact"'),
-  'Desktop or mobile navigation on the homepage should link to /contact.'
+  pages['index.html'].includes('href="https://glow.soulalchemy528.com/contact-us"'),
+  'Desktop or mobile navigation on the homepage should link to the live contact-us URL.'
 );
 assert.ok(
   pages['index.html'].includes('href="/shipping-policy"'),
@@ -127,8 +127,8 @@ assert.ok(
   'Terms page should reference the clean refund policy route inline.'
 );
 assert.ok(
-  pages['thankyou.html'].includes('href="/contact"'),
-  'Thank you page should point to the clean /contact route.'
+  pages['thankyou.html'].includes('href="https://glow.soulalchemy528.com/contact-us"'),
+  'Thank you page should point to the live contact-us URL.'
 );
 assert.equal(
   productVideoButtons.length,
@@ -234,6 +234,11 @@ publishedPages.forEach((fileName) => {
   assert.ok(
     content.includes('WY 82609 USA'),
     fileName + ' should include the updated footer address line 2.'
+  );
+  assert.equal(
+    content.includes('href="/contact"'),
+    false,
+    fileName + ' should not contain the old /contact link target.'
   );
 });
 
