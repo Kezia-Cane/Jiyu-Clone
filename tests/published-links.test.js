@@ -51,6 +51,18 @@ assert.ok(
   'Homepage help links should use the clean /terms-of-service route.'
 );
 assert.ok(
+  pages['index.html'].includes("fbq('init', '1345549829342750');"),
+  'Homepage should include the requested Meta Pixel init ID.'
+);
+assert.ok(
+  pages['index.html'].includes('https://connect.facebook.net/en_US/fbevents.js'),
+  'Homepage should load the Meta Pixel script.'
+);
+assert.ok(
+  pages['index.html'].includes('facebook.com/tr?id=1345549829342750&ev=PageView&noscript=1'),
+  'Homepage should include the Meta Pixel noscript fallback.'
+);
+assert.ok(
   pages['about.html'].includes('href="/faq"'),
   'About page links should point to the clean /faq route.'
 );
