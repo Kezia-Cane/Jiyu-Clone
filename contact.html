@@ -125,7 +125,7 @@
         <div class="contact-form-card__frame">
           <iframe
               src="https://api.leadconnectorhq.com/widget/form/ObqCaTLA2e5XepeDlLWO"
-              style="width:100%;height:1100px;border:none;border-radius:18px"
+              style="width:100%;height:1650px;border:none;border-radius:18px"
               class="ghl-contact-embed"
               id="inline-ObqCaTLA2e5XepeDlLWO"
               data-layout="{'id':'INLINE'}"
@@ -136,94 +136,16 @@
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Contact Us Silmea"
-              data-height="1100"
+              data-height="1650"
               data-layout-iframe-id="inline-ObqCaTLA2e5XepeDlLWO"
               data-form-id="ObqCaTLA2e5XepeDlLWO"
               title="Contact Us Silmea"
+              scrolling="no"
               loading="lazy"
                   >
           </iframe>
         </div>
         <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-        <script>
-          (function () {
-            var iframe = document.getElementById('inline-ObqCaTLA2e5XepeDlLWO');
-
-            if (!iframe) {
-              return;
-            }
-
-            function getFallbackHeight() {
-              return window.innerWidth <= 768 ? 1240 : 1100;
-            }
-
-            function setIframeHeight(height) {
-              var nextHeight = Number(height);
-
-              if (!Number.isFinite(nextHeight) || nextHeight < 880) {
-                return;
-              }
-
-              iframe.style.height = nextHeight + 'px';
-              iframe.height = String(nextHeight);
-              iframe.dataset.height = String(nextHeight);
-            }
-
-            function scanForHeight(value) {
-              if (typeof value === 'number' && Number.isFinite(value)) {
-                return value;
-              }
-
-              if (!value || typeof value !== 'object') {
-                return null;
-              }
-
-              var priorityKeys = ['height', 'iframeHeight', 'frameHeight', 'scrollHeight', 'clientHeight', 'outerHeight'];
-              var index = 0;
-
-              for (index = 0; index < priorityKeys.length; index += 1) {
-                if (typeof value[priorityKeys[index]] === 'number' && Number.isFinite(value[priorityKeys[index]])) {
-                  return value[priorityKeys[index]];
-                }
-              }
-
-              for (var key in value) {
-                if (Object.prototype.hasOwnProperty.call(value, key)) {
-                  var nestedHeight = scanForHeight(value[key]);
-                  if (nestedHeight) {
-                    return nestedHeight;
-                  }
-                }
-              }
-
-              return null;
-            }
-
-            setIframeHeight(getFallbackHeight());
-
-            window.addEventListener('resize', function () {
-              setIframeHeight(getFallbackHeight());
-            });
-
-            window.addEventListener('message', function (event) {
-              var data = event.data;
-
-              if (typeof data === 'string') {
-                try {
-                  data = JSON.parse(data);
-                } catch (error) {
-                  return;
-                }
-              }
-
-              var reportedHeight = scanForHeight(data);
-
-              if (reportedHeight) {
-                setIframeHeight(Math.max(900, Math.min(2200, reportedHeight + 24)));
-              }
-            });
-          }());
-        </script>
       </div>
     </section>
   </main>

@@ -10072,6 +10072,7 @@ video {
 
 .contact-form-card__frame .ghl-contact-embed {
   width: 100%;
+  height: 1650px;
   overflow: hidden;
 }
 
@@ -11087,7 +11088,7 @@ video {
   }
 
   .contact-form-card__frame .ghl-contact-embed {
-    min-height: 0;
+    height: 1650px;
   }
 
   .legal-block {
