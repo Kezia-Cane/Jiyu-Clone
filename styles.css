@@ -10073,7 +10073,14 @@ video {
 .contact-form-card__frame .ghl-contact-embed {
   width: 100%;
   height: 1650px;
-  overflow: hidden;
+  max-height: 1650px;
+  overflow: hidden !important;
+  display: block;
+  scrollbar-width: none;
+}
+
+.contact-form-card__frame .ghl-contact-embed::-webkit-scrollbar {
+  display: none;
 }
 
 /* ========================================
