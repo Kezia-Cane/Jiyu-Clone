@@ -167,6 +167,30 @@ assert.ok(
   'Terms page should reference the clean refund policy route inline.'
 );
 assert.ok(
+  pages['refund-return-policy.html'].includes('Questions About Returns?'),
+  'Refund policy page should use the upgraded support-card title.'
+);
+assert.ok(
+  pages['privacy-policy.html'].includes('Questions About This Policy?'),
+  'Privacy policy page should use the upgraded support-card title.'
+);
+assert.ok(
+  pages['terms-of-service.html'].includes('Questions About These Terms?'),
+  'Terms page should use the upgraded support-card title.'
+);
+assert.ok(
+  stylesContent.includes('.support-card {'),
+  'styles.css should include shared support-card styling for legal pages.'
+);
+assert.ok(
+  stylesContent.includes('.support-card__title'),
+  'styles.css should include support-card title styling.'
+);
+assert.ok(
+  stylesContent.includes('.support-card__text'),
+  'styles.css should include support-card body styling.'
+);
+assert.ok(
   pages['thankyou.html'].includes('href="/contact"'),
   'Thank you page should point to /contact.'
 );
