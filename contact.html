@@ -123,66 +123,107 @@
           <p class="contact-form-card__text">Complete the form below and our team will reply as soon as possible.</p>
         </div>
         <div class="contact-form-card__frame">
-          <form class="contact-placeholder-form" aria-label="Contact support form">
-            <div class="contact-placeholder-form__grid">
-              <label class="contact-placeholder-form__field">
-                <span>Full Name</span>
-                <input type="text" name="fullName" placeholder="Your full name" autocomplete="name">
-              </label>
-              <label class="contact-placeholder-form__field">
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
-              </label>
-            </div>
-
-            <div class="contact-placeholder-form__grid">
-              <label class="contact-placeholder-form__field">
-                <span>Phone</span>
-                <input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
-              </label>
-              <label class="contact-placeholder-form__field">
-                <span>Order Number</span>
-                <input type="text" name="orderNumber" placeholder="#1001 or leave blank">
-              </label>
-            </div>
-
-            <label class="contact-placeholder-form__field">
-              <span>Support Topic</span>
-              <select name="topic">
-                <option value="">Choose a topic</option>
-                <option value="order-support">Order support</option>
-                <option value="shipping-question">Shipping question</option>
-                <option value="product-guidance">Product guidance</option>
-                <option value="brand-contact">Brand contact</option>
-              </select>
-            </label>
-
-            <label class="contact-placeholder-form__field">
-              <span>Your Message</span>
-              <textarea name="message" placeholder="Tell us how we can help."></textarea>
-            </label>
-
-            <div class="contact-placeholder-form__meta">
-              <p class="contact-placeholder-form__policy">
-                <a href="/privacy-policy">Privacy Policy</a>
-                <span aria-hidden="true">|</span>
-                <a href="/terms-of-service">Terms of Service</a>
-              </p>
-
-              <label class="contact-placeholder-form__check">
-                <input type="checkbox" name="supportConsent">
-                <span>By checking this box, I consent to receive non-marketing text messages from Silmea LLC regarding my support request.</span>
-              </label>
-
-              <label class="contact-placeholder-form__check">
-                <input type="checkbox" name="marketingConsent">
-                <span>By checking this box, I consent to receive marketing and promotional messages including special offers, discounts, and new product updates from Silmea LLC.</span>
-              </label>
-            </div>
-
-            <button type="button" class="contact-placeholder-form__submit">Send</button>
-          </form>
+          <iframe
+              src="https://api.leadconnectorhq.com/widget/form/ObqCaTLA2e5XepeDlLWO"
+              style="width:100%;height:1460px;border:none;border-radius:18px"
+              class="ghl-contact-embed"
+              id="inline-ObqCaTLA2e5XepeDlLWO"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Contact Us Silmea"
+              data-height="1460"
+              data-layout-iframe-id="inline-ObqCaTLA2e5XepeDlLWO"
+              data-form-id="ObqCaTLA2e5XepeDlLWO"
+              title="Contact Us Silmea"
+              loading="lazy"
+                  >
+          </iframe>
         </div>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        <script>
+          (function () {
+            var iframe = document.getElementById('inline-ObqCaTLA2e5XepeDlLWO');
+
+            if (!iframe) {
+              return;
+            }
+
+            function getFallbackHeight() {
+              return window.innerWidth <= 768 ? 1580 : 1460;
+            }
+
+            function setIframeHeight(height) {
+              var nextHeight = Number(height);
+
+              if (!Number.isFinite(nextHeight) || nextHeight < 1100) {
+                return;
+              }
+
+              iframe.style.height = nextHeight + 'px';
+              iframe.height = String(nextHeight);
+              iframe.dataset.height = String(nextHeight);
+            }
+
+            function scanForHeight(value) {
+              if (typeof value === 'number' && Number.isFinite(value)) {
+                return value;
+              }
+
+              if (!value || typeof value !== 'object') {
+                return null;
+              }
+
+              var priorityKeys = ['height', 'iframeHeight', 'frameHeight', 'scrollHeight', 'clientHeight', 'outerHeight'];
+              var index = 0;
+
+              for (index = 0; index < priorityKeys.length; index += 1) {
+                if (typeof value[priorityKeys[index]] === 'number' && Number.isFinite(value[priorityKeys[index]])) {
+                  return value[priorityKeys[index]];
+                }
+              }
+
+              for (var key in value) {
+                if (Object.prototype.hasOwnProperty.call(value, key)) {
+                  var nestedHeight = scanForHeight(value[key]);
+                  if (nestedHeight) {
+                    return nestedHeight;
+                  }
+                }
+              }
+
+              return null;
+            }
+
+            setIframeHeight(getFallbackHeight());
+
+            window.addEventListener('resize', function () {
+              setIframeHeight(getFallbackHeight());
+            });
+
+            window.addEventListener('message', function (event) {
+              var data = event.data;
+
+              if (typeof data === 'string') {
+                try {
+                  data = JSON.parse(data);
+                } catch (error) {
+                  return;
+                }
+              }
+
+              var reportedHeight = scanForHeight(data);
+
+              if (reportedHeight) {
+                setIframeHeight(Math.max(getFallbackHeight(), reportedHeight + 40));
+              }
+            });
+          }());
+        </script>
       </div>
     </section>
   </main>
