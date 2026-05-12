@@ -123,28 +123,66 @@
           <p class="contact-form-card__text">Complete the form below and our team will reply as soon as possible.</p>
         </div>
         <div class="contact-form-card__frame">
-          <iframe
-              src="https://api.leadconnectorhq.com/widget/form/ObqCaTLA2e5XepeDlLWO"
-              style="width:100%;height:100%;border:none;border-radius:18px"
-              class="ghl-contact-embed"
-              id="inline-ObqCaTLA2e5XepeDlLWO" 
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="Contact Us Silmea"
-              data-height="undefined"
-              data-layout-iframe-id="inline-ObqCaTLA2e5XepeDlLWO"
-              data-form-id="ObqCaTLA2e5XepeDlLWO"
-              title="Contact Us Silmea"
-              loading="lazy"
-                  >
-          </iframe>
+          <form class="contact-placeholder-form" aria-label="Contact support form">
+            <div class="contact-placeholder-form__grid">
+              <label class="contact-placeholder-form__field">
+                <span>Full Name</span>
+                <input type="text" name="fullName" placeholder="Your full name" autocomplete="name">
+              </label>
+              <label class="contact-placeholder-form__field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
+              </label>
+            </div>
+
+            <div class="contact-placeholder-form__grid">
+              <label class="contact-placeholder-form__field">
+                <span>Phone</span>
+                <input type="tel" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+              </label>
+              <label class="contact-placeholder-form__field">
+                <span>Order Number</span>
+                <input type="text" name="orderNumber" placeholder="#1001 or leave blank">
+              </label>
+            </div>
+
+            <label class="contact-placeholder-form__field">
+              <span>Support Topic</span>
+              <select name="topic">
+                <option value="">Choose a topic</option>
+                <option value="order-support">Order support</option>
+                <option value="shipping-question">Shipping question</option>
+                <option value="product-guidance">Product guidance</option>
+                <option value="brand-contact">Brand contact</option>
+              </select>
+            </label>
+
+            <label class="contact-placeholder-form__field">
+              <span>Your Message</span>
+              <textarea name="message" placeholder="Tell us how we can help."></textarea>
+            </label>
+
+            <div class="contact-placeholder-form__meta">
+              <p class="contact-placeholder-form__policy">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <span aria-hidden="true">|</span>
+                <a href="/terms-of-service">Terms of Service</a>
+              </p>
+
+              <label class="contact-placeholder-form__check">
+                <input type="checkbox" name="supportConsent">
+                <span>By checking this box, I consent to receive non-marketing text messages from Silmea LLC regarding my support request.</span>
+              </label>
+
+              <label class="contact-placeholder-form__check">
+                <input type="checkbox" name="marketingConsent">
+                <span>By checking this box, I consent to receive marketing and promotional messages including special offers, discounts, and new product updates from Silmea LLC.</span>
+              </label>
+            </div>
+
+            <button type="button" class="contact-placeholder-form__submit">Send</button>
+          </form>
         </div>
-        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
       </div>
     </section>
   </main>
