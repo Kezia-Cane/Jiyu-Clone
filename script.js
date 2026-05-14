@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var addToCartBtn = document.getElementById('add-to-cart');
   var checkoutCtas = Array.from(document.querySelectorAll('[data-checkout-cta]'));
   var checkoutRoutesApi = window.JiyuCheckoutRoutes;
+  var trackingApi = window.JiyuAbTracking;
+  var tracker = trackingApi && typeof trackingApi.createAbTracker === 'function'
+    ? trackingApi.createAbTracker({
+      endpoint: 'https://funnel-ab-dashboard.vercel.app/api/ab-track',
+      testKey: 'jiyu_headline_v1'
+    })
+    : null;
 
   var accordionItems = document.querySelectorAll('[data-accordion]');
   var faqItems = document.querySelectorAll('[data-faq]');
@@ -113,6 +120,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (cta.tagName && cta.tagName.toLowerCase() === 'a') {
         cta.href = checkoutUrl;
+      }
+    });
+  }
+
+  function trackCheckoutClick(checkoutUrl, purchaseType, bundleKey) {
+    if (!tracker) {
+      return;
+    }
+
+    tracker.track('cta_click', {
+      metadata: {
+        checkout_url: checkoutUrl,
+        purchase_type: purchaseType,
+        bundle: bundleKey
       }
     });
   }
@@ -362,6 +383,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   renderJarPricing();
 
+  if (tracker) {
+    tracker.track('page_view');
+  }
+
   if (headerMenu && mobileNav) {
     headerMenu.addEventListener('click', function () {
       if (mobileNav.hidden) {
@@ -430,7 +455,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       event.preventDefault();
       syncCheckoutCtas();
-      window.location.href = getCheckoutUrl();
+      var checkoutUrl = getCheckoutUrl();
+      trackCheckoutClick(checkoutUrl, getPurchaseType(), getSelectedBundleKey());
+      window.location.href = checkoutUrl;
     });
   }
 
