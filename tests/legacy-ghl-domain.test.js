@@ -11,8 +11,6 @@ const filesToAudit = [
   'refund-live.html',
   'shipping-live.html',
   'terms-live.html',
-  'ghl.html',
-  'ghl-ready.html',
   'ghl.js'
 ];
 
