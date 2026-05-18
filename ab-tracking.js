@@ -104,6 +104,16 @@
         },
         body: body,
         keepalive: true
+      }).then(function (response) {
+        if (!response || response.ok === false) {
+          return {
+            queued: false,
+            ok: response ? response.ok : false,
+            status: response && typeof response.status !== 'undefined' ? response.status : 0
+          };
+        }
+
+        return response;
       }).catch(function () {
         return { queued: false };
       });

@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 
 const {
   buildTrackingPayload,
+  createAbTracker,
   normalizeVariant,
 } = require('../ab-tracking.js');
 
@@ -29,3 +30,31 @@ assert.deepEqual(
 );
 
 console.log('ab-tracking.test.js passed');
+
+(async () => {
+  const tracker = createAbTracker({
+    endpoint: 'https://example.com/api/ab-track',
+    fetchImpl() {
+      return Promise.resolve({ ok: false, status: 404 });
+    },
+    location: {
+      href: 'https://tryglow.soulalchemy528.com/',
+      pathname: '/',
+    },
+    navigator: {},
+    storage: {
+      getItem() {
+        return 'B';
+      },
+    },
+    testKey: 'jiyu_headline_v1',
+  });
+
+  assert.deepEqual(
+    await tracker.track('page_view'),
+    { queued: false, ok: false, status: 404 },
+    'HTTP failures should resolve cleanly so analytics never breaks the landing page.',
+  );
+
+  console.log('ab-tracking failure handling passed');
+})();

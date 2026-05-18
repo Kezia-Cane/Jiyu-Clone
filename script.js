@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var checkoutRoutesApi = window.JiyuCheckoutRoutes;
   var trackingApi = window.JiyuAbTracking;
   var headlineTestKey = 'jiyu_headline_v1';
-  var headlineEndpoint = 'https://funnel-ab-dashboard.vercel.app/api/ab-test';
   var headlineElement = document.querySelector('[data-ab-headline]');
   var defaultHeadlineText = headlineElement && headlineElement.textContent
     ? headlineElement.textContent.trim()
@@ -178,37 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function normalizeVariantDefinitions(rawVariants) {
-    if (!Array.isArray(rawVariants)) {
-      return [];
-    }
-
-    return rawVariants
-      .map(function (variant) {
-        if (!variant || typeof variant !== 'object') {
-          return null;
-        }
-
-        if (typeof variant.variant_key !== 'string' || typeof variant.headline !== 'string') {
-          return null;
-        }
-
-        var headline = variant.headline.trim();
-
-        if (!headline) {
-          return null;
-        }
-
-        return {
-          variant_key: variant.variant_key.trim().toUpperCase(),
-          headline: headline,
-          subheadline: typeof variant.subheadline === 'string' ? variant.subheadline.trim() : '',
-          is_control: Boolean(variant.is_control)
-        };
-      })
-      .filter(Boolean);
-  }
-
   function chooseVariantDefinition(variants, preferredVariantKey) {
     if (!variants.length) {
       return null;
@@ -262,73 +230,15 @@ document.addEventListener('DOMContentLoaded', function () {
     return variantDefinition;
   }
 
-  function fetchHeadlineDefinition() {
-    if (!window.fetch) {
-      return Promise.resolve(null);
-    }
-
-    return window.fetch(headlineEndpoint + '?test_key=' + encodeURIComponent(headlineTestKey), {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json'
-      },
-      credentials: 'omit'
-    })
-      .then(function (response) {
-        if (!response.ok) {
-          return null;
-        }
-
-        return response.json().catch(function () {
-          return null;
-        });
-      })
-      .then(function (payload) {
-        if (!payload || payload.success !== true || !payload.data) {
-          return null;
-        }
-
-        return payload.data;
-      })
-      .catch(function () {
-        return null;
-      });
-  }
-
   function resolveHeadlineAssignment() {
     var storedAssignment = getStoredHeadlineAssignment();
-    var storedVariantKey = storedAssignment
-      ? storedAssignment.variant_key
-      : getPersistedVariantKey();
 
     if (storedAssignment && storedAssignment.headline) {
       applyHeadlineText(storedAssignment.headline);
-    } else {
-      var fallbackAssignment = applyFallbackHeadlineAssignment();
-      storedVariantKey = fallbackAssignment && fallbackAssignment.variant_key
-        ? fallbackAssignment.variant_key
-        : storedVariantKey;
+      return Promise.resolve(storedAssignment);
     }
 
-    return fetchHeadlineDefinition().then(function (definition) {
-      var variants = normalizeVariantDefinitions(definition && definition.variants);
-
-      if (!variants.length) {
-        return applyFallbackHeadlineAssignment();
-      }
-
-      var variantDefinition = chooseVariantDefinition(variants, storedVariantKey);
-
-      if (!variantDefinition) {
-        return applyFallbackHeadlineAssignment();
-      }
-
-      persistHeadlineAssignment(variantDefinition);
-      applyHeadlineText(variantDefinition.headline);
-      return variantDefinition;
-    }).catch(function () {
-      return applyFallbackHeadlineAssignment();
-    });
+    return Promise.resolve(applyFallbackHeadlineAssignment());
   }
 
   function formatPrice(value) {
