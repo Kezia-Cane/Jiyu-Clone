@@ -21,12 +21,34 @@ document.addEventListener('DOMContentLoaded', function () {
   var checkoutCtas = Array.from(document.querySelectorAll('[data-checkout-cta]'));
   var checkoutRoutesApi = window.JiyuCheckoutRoutes;
   var trackingApi = window.JiyuAbTracking;
+  var headlineTestKey = 'jiyu_headline_v1';
+  var headlineEndpoint = 'https://funnel-ab-dashboard.vercel.app/api/ab-test';
+  var headlineElement = document.querySelector('[data-ab-headline]');
+  var defaultHeadlineText = headlineElement && headlineElement.textContent
+    ? headlineElement.textContent.trim()
+    : 'Renewal & Rejuvenation Toner Pads';
+  var headlineAssignmentStorageKey = 'ab_variant_payload:' + headlineTestKey;
+  var fallbackHeadlineVariants = [
+    {
+      variant_key: 'A',
+      headline: defaultHeadlineText,
+      subheadline: '',
+      is_control: true
+    },
+    {
+      variant_key: 'B',
+      headline: 'Korean Toner Pads for Dark Spots, Fine Lines & Dull Skin',
+      subheadline: '',
+      is_control: false
+    }
+  ];
   var tracker = trackingApi && typeof trackingApi.createAbTracker === 'function'
     ? trackingApi.createAbTracker({
       endpoint: 'https://funnel-ab-dashboard.vercel.app/api/ab-track',
-      testKey: 'jiyu_headline_v1'
+      testKey: headlineTestKey
     })
     : null;
+  var headlineExperimentReady = Promise.resolve(null);
 
   var accordionItems = document.querySelectorAll('[data-accordion]');
   var faqItems = document.querySelectorAll('[data-faq]');
@@ -66,6 +88,247 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (addToCartBtn && checkoutCtas.indexOf(addToCartBtn) === -1) {
     checkoutCtas.push(addToCartBtn);
+  }
+
+  function applyHeadlineText(text) {
+    if (!headlineElement || typeof text !== 'string') {
+      return;
+    }
+
+    var nextText = text.trim();
+
+    if (!nextText) {
+      return;
+    }
+
+    headlineElement.textContent = nextText;
+  }
+
+  function getStoredHeadlineAssignment() {
+    try {
+      var rawValue = window.localStorage && window.localStorage.getItem(headlineAssignmentStorageKey);
+
+      if (!rawValue) {
+        return null;
+      }
+
+      var parsed = JSON.parse(rawValue);
+
+      if (!parsed || typeof parsed !== 'object') {
+        return null;
+      }
+
+      if (typeof parsed.variant_key !== 'string' || typeof parsed.headline !== 'string') {
+        return null;
+      }
+
+      return {
+        variant_key: parsed.variant_key.trim().toUpperCase(),
+        headline: parsed.headline.trim(),
+        subheadline: typeof parsed.subheadline === 'string' ? parsed.subheadline.trim() : '',
+        is_control: Boolean(parsed.is_control)
+      };
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function persistHeadlineAssignment(variantDefinition) {
+    if (!variantDefinition || !trackingApi || typeof trackingApi.setStoredVariant !== 'function') {
+      return;
+    }
+
+    var normalizedVariantKey = trackingApi.setStoredVariant(
+      window.localStorage,
+      headlineTestKey,
+      variantDefinition.variant_key
+    );
+
+    try {
+      window.localStorage.setItem(headlineAssignmentStorageKey, JSON.stringify({
+        variant_key: normalizedVariantKey,
+        headline: variantDefinition.headline,
+        subheadline: variantDefinition.subheadline || '',
+        is_control: Boolean(variantDefinition.is_control)
+      }));
+    } catch (error) {
+      // Ignore storage write failures so the page still works normally.
+    }
+  }
+
+  function getPersistedVariantKey() {
+    var scopedStorageKey = trackingApi && typeof trackingApi.buildVariantStorageKey === 'function'
+      ? trackingApi.buildVariantStorageKey(headlineTestKey)
+      : 'ab_variant:' + headlineTestKey;
+
+    try {
+      var scopedValue = window.localStorage && window.localStorage.getItem(scopedStorageKey);
+      var legacyValue = window.localStorage && window.localStorage.getItem('ab_variant');
+      var storedValue = scopedValue || legacyValue;
+
+      if (!storedValue) {
+        return null;
+      }
+
+      return trackingApi && typeof trackingApi.normalizeVariant === 'function'
+        ? trackingApi.normalizeVariant(storedValue)
+        : storedValue.trim().toUpperCase();
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function normalizeVariantDefinitions(rawVariants) {
+    if (!Array.isArray(rawVariants)) {
+      return [];
+    }
+
+    return rawVariants
+      .map(function (variant) {
+        if (!variant || typeof variant !== 'object') {
+          return null;
+        }
+
+        if (typeof variant.variant_key !== 'string' || typeof variant.headline !== 'string') {
+          return null;
+        }
+
+        var headline = variant.headline.trim();
+
+        if (!headline) {
+          return null;
+        }
+
+        return {
+          variant_key: variant.variant_key.trim().toUpperCase(),
+          headline: headline,
+          subheadline: typeof variant.subheadline === 'string' ? variant.subheadline.trim() : '',
+          is_control: Boolean(variant.is_control)
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function chooseVariantDefinition(variants, preferredVariantKey) {
+    if (!variants.length) {
+      return null;
+    }
+
+    var preferredVariant = variants.find(function (variant) {
+      return variant.variant_key === preferredVariantKey;
+    });
+
+    if (preferredVariant) {
+      return preferredVariant;
+    }
+
+    if (variants.length === 1) {
+      return variants[0];
+    }
+
+    return variants[Math.floor(Math.random() * variants.length)] || variants[0];
+  }
+
+  function applyFallbackHeadlineAssignment() {
+    var storedAssignment = getStoredHeadlineAssignment();
+    var fallbackVariantKey = storedAssignment
+      ? storedAssignment.variant_key
+      : getPersistedVariantKey();
+
+    if (storedAssignment && storedAssignment.headline) {
+      applyHeadlineText(storedAssignment.headline);
+      return storedAssignment;
+    }
+
+    var variantDefinition = chooseVariantDefinition(fallbackHeadlineVariants, fallbackVariantKey);
+
+    if (!variantDefinition) {
+      trackingApi && typeof trackingApi.setStoredVariant === 'function'
+        ? trackingApi.setStoredVariant(window.localStorage, headlineTestKey, fallbackVariantKey || 'A')
+        : null;
+
+      applyHeadlineText(defaultHeadlineText);
+
+      return {
+        variant_key: fallbackVariantKey || 'A',
+        headline: defaultHeadlineText,
+        subheadline: '',
+        is_control: true
+      };
+    }
+
+    persistHeadlineAssignment(variantDefinition);
+    applyHeadlineText(variantDefinition.headline);
+    return variantDefinition;
+  }
+
+  function fetchHeadlineDefinition() {
+    if (!window.fetch) {
+      return Promise.resolve(null);
+    }
+
+    return window.fetch(headlineEndpoint + '?test_key=' + encodeURIComponent(headlineTestKey), {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json'
+      },
+      credentials: 'omit'
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          return null;
+        }
+
+        return response.json().catch(function () {
+          return null;
+        });
+      })
+      .then(function (payload) {
+        if (!payload || payload.success !== true || !payload.data) {
+          return null;
+        }
+
+        return payload.data;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+
+  function resolveHeadlineAssignment() {
+    var storedAssignment = getStoredHeadlineAssignment();
+    var storedVariantKey = storedAssignment
+      ? storedAssignment.variant_key
+      : getPersistedVariantKey();
+
+    if (storedAssignment && storedAssignment.headline) {
+      applyHeadlineText(storedAssignment.headline);
+    } else {
+      var fallbackAssignment = applyFallbackHeadlineAssignment();
+      storedVariantKey = fallbackAssignment && fallbackAssignment.variant_key
+        ? fallbackAssignment.variant_key
+        : storedVariantKey;
+    }
+
+    return fetchHeadlineDefinition().then(function (definition) {
+      var variants = normalizeVariantDefinitions(definition && definition.variants);
+
+      if (!variants.length) {
+        return applyFallbackHeadlineAssignment();
+      }
+
+      var variantDefinition = chooseVariantDefinition(variants, storedVariantKey);
+
+      if (!variantDefinition) {
+        return applyFallbackHeadlineAssignment();
+      }
+
+      persistHeadlineAssignment(variantDefinition);
+      applyHeadlineText(variantDefinition.headline);
+      return variantDefinition;
+    }).catch(function () {
+      return applyFallbackHeadlineAssignment();
+    });
   }
 
   function formatPrice(value) {
@@ -383,9 +646,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   renderJarPricing();
 
-  if (tracker) {
-    tracker.track('page_view');
-  }
+  headlineExperimentReady = resolveHeadlineAssignment().finally(function () {
+    if (tracker) {
+      tracker.track('page_view');
+    }
+  });
 
   if (headerMenu && mobileNav) {
     headerMenu.addEventListener('click', function () {
@@ -454,10 +719,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       event.preventDefault();
-      syncCheckoutCtas();
-      var checkoutUrl = getCheckoutUrl();
-      trackCheckoutClick(checkoutUrl, getPurchaseType(), getSelectedBundleKey());
-      window.location.href = checkoutUrl;
+      headlineExperimentReady.finally(function () {
+        syncCheckoutCtas();
+        var checkoutUrl = getCheckoutUrl();
+        trackCheckoutClick(checkoutUrl, getPurchaseType(), getSelectedBundleKey());
+        window.location.href = checkoutUrl;
+      });
     });
   }
 

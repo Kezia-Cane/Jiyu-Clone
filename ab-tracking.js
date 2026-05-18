@@ -8,6 +8,46 @@
     return normalized || 'A';
   }
 
+  function buildVariantStorageKey(testKey) {
+    return 'ab_variant:' + String(testKey || '').trim();
+  }
+
+  function getStoredVariant(storageRef, testKey, legacyStorageKey) {
+    var scopedStorageKey = buildVariantStorageKey(testKey);
+    var fallbackKey = legacyStorageKey || 'ab_variant';
+
+    try {
+      var scopedValue = storageRef && storageRef.getItem(scopedStorageKey);
+
+      if (scopedValue) {
+        return normalizeVariant(scopedValue);
+      }
+
+      return normalizeVariant(storageRef && storageRef.getItem(fallbackKey));
+    } catch (error) {
+      return 'A';
+    }
+  }
+
+  function setStoredVariant(storageRef, testKey, variant, legacyStorageKey) {
+    var normalizedVariant = normalizeVariant(variant);
+    var scopedStorageKey = buildVariantStorageKey(testKey);
+    var fallbackKey = legacyStorageKey || 'ab_variant';
+
+    if (!storageRef || typeof storageRef.setItem !== 'function') {
+      return normalizedVariant;
+    }
+
+    try {
+      storageRef.setItem(scopedStorageKey, normalizedVariant);
+      storageRef.setItem(fallbackKey, normalizedVariant);
+    } catch (error) {
+      // Ignore storage write failures so tracking can continue safely.
+    }
+
+    return normalizedVariant;
+  }
+
   function buildTrackingPayload(options) {
     return {
       event: options.event,
@@ -32,11 +72,11 @@
         return normalizeVariant(config.variant);
       }
 
-      try {
-        return normalizeVariant(storageRef && storageRef.getItem(storageKey));
-      } catch (error) {
-        return 'A';
-      }
+      return getStoredVariant(storageRef, config.testKey, storageKey);
+    }
+
+    function setVariant(variant) {
+      return setStoredVariant(storageRef, config.testKey, variant, storageKey);
     }
 
     function send(payload) {
@@ -93,14 +133,18 @@
     return {
       buildTrackingPayload: buildTrackingPayload,
       getVariant: getVariant,
+      setVariant: setVariant,
       track: track
     };
   }
 
   var api = {
+    buildVariantStorageKey: buildVariantStorageKey,
     buildTrackingPayload: buildTrackingPayload,
     createAbTracker: createAbTracker,
-    normalizeVariant: normalizeVariant
+    getStoredVariant: getStoredVariant,
+    normalizeVariant: normalizeVariant,
+    setStoredVariant: setStoredVariant
   };
 
   if (typeof module !== 'undefined' && module.exports) {
