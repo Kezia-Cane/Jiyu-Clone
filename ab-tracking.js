@@ -23,9 +23,15 @@
         return normalizeVariant(scopedValue);
       }
 
-      return normalizeVariant(storageRef && storageRef.getItem(fallbackKey));
+      var legacyValue = storageRef && storageRef.getItem(fallbackKey);
+
+      if (legacyValue) {
+        return normalizeVariant(legacyValue);
+      }
+
+      return null;
     } catch (error) {
-      return 'A';
+      return null;
     }
   }
 
@@ -55,7 +61,8 @@
       variant: normalizeVariant(options.variant),
       page_path: options.pagePath,
       page_url: options.pageUrl,
-      timestamp: options.timestamp || 'NOW'
+      timestamp: options.timestamp || 'NOW',
+      user_agent: typeof options.userAgent === 'string' ? options.userAgent : ''
     };
   }
 
@@ -66,13 +73,29 @@
     var navigatorRef = config.navigator || globalScope.navigator || null;
     var storageRef = config.storage || globalScope.localStorage || null;
     var storageKey = config.storageKey || 'ab_variant';
+    var randomImpl = typeof config.randomImpl === 'function' ? config.randomImpl : Math.random;
+
+    function ensureVariantAssignment() {
+      var storedVariant = getStoredVariant(storageRef, config.testKey, storageKey);
+
+      if (storedVariant === 'A' || storedVariant === 'B') {
+        return storedVariant;
+      }
+
+      return setStoredVariant(
+        storageRef,
+        config.testKey,
+        randomImpl() < 0.5 ? 'A' : 'B',
+        storageKey
+      );
+    }
 
     function getVariant() {
       if (config.variant) {
         return normalizeVariant(config.variant);
       }
 
-      return getStoredVariant(storageRef, config.testKey, storageKey);
+      return ensureVariantAssignment();
     }
 
     function setVariant(variant) {
@@ -130,7 +153,8 @@
         variant: extra && extra.variant ? extra.variant : getVariant(),
         pagePath: extra && extra.pagePath ? extra.pagePath : locationRef.pathname,
         pageUrl: extra && extra.pageUrl ? extra.pageUrl : locationRef.href,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        userAgent: navigatorRef && navigatorRef.userAgent ? navigatorRef.userAgent : ''
       });
 
       if (extra && extra.metadata) {
@@ -142,9 +166,11 @@
 
     return {
       buildTrackingPayload: buildTrackingPayload,
+      ensureVariantAssignment: ensureVariantAssignment,
       getVariant: getVariant,
       setVariant: setVariant,
-      track: track
+      track: track,
+      trackEvent: track
     };
   }
 

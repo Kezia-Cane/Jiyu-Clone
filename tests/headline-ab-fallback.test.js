@@ -47,6 +47,7 @@ function createElement(textContent) {
 async function runLandingScriptWithStorage(storage) {
   let domContentLoadedHandler = null;
   const headline = createElement('Renewal & Rejuvenation Toner Pads');
+  const consoleCalls = [];
 
   const document = {
     body: {
@@ -74,7 +75,20 @@ async function runLandingScriptWithStorage(storage) {
 
   const context = {
     Blob,
-    console,
+    console: {
+      info(...args) {
+        consoleCalls.push({ level: 'info', args });
+      },
+      warn(...args) {
+        consoleCalls.push({ level: 'warn', args });
+      },
+      log(...args) {
+        consoleCalls.push({ level: 'log', args });
+      },
+      error(...args) {
+        consoleCalls.push({ level: 'error', args });
+      },
+    },
     document,
     fetch() {
       return Promise.resolve({ ok: false });
@@ -122,18 +136,39 @@ async function runLandingScriptWithStorage(storage) {
     await Promise.resolve();
   }
 
-  return headline.textContent;
+  return {
+    consoleCalls,
+    headline: headline.textContent,
+    state: context.window.JiyuHeadlineAbState,
+  };
 }
 
 (async () => {
-  const headline = await runLandingScriptWithStorage(createStorage({
+  const result = await runLandingScriptWithStorage(createStorage({
     'ab_variant:jiyu_headline_v1': 'B',
   }));
 
   assert.notEqual(
-    headline,
+    result.headline,
     'Renewal & Rejuvenation Toner Pads',
     'Variant B should render a non-control fallback headline when dashboard read access is unavailable.',
+  );
+
+  assert.equal(
+    result.state && result.state.variant_key,
+    'B',
+    'The landing page should publish the resolved variant state on window for debugging.',
+  );
+
+  assert.equal(
+    result.consoleCalls.some(function (entry) {
+      return entry.level === 'info'
+        && entry.args.some(function (value) {
+          return typeof value === 'string' && value.indexOf('variant B') !== -1;
+        });
+    }),
+    true,
+    'The landing page should log the resolved headline variant to the console.',
   );
 
   console.log('headline-ab-fallback.test.js passed');

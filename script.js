@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var checkoutRoutesApi = window.JiyuCheckoutRoutes;
   var trackingApi = window.JiyuAbTracking;
   var headlineTestKey = 'jiyu_headline_v1';
+  var supabaseHeadlineConfig = {
+    url: 'https://zfnfdjmvcmnxtqrdwrzm.supabase.co',
+    publishableKey: 'sb_publishable_MECY6G2y_O84llZ6ax54Gg_8F_0CFXT'
+  };
   var headlineElement = document.querySelector('[data-ab-headline]');
   var defaultHeadlineText = headlineElement && headlineElement.textContent
     ? headlineElement.textContent.trim()
@@ -87,6 +91,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (addToCartBtn && checkoutCtas.indexOf(addToCartBtn) === -1) {
     checkoutCtas.push(addToCartBtn);
+  }
+
+  function publishHeadlineDebugState(assignment, metadata) {
+    if (!assignment || !window) {
+      return;
+    }
+
+    var debugState = {
+      test_key: headlineTestKey,
+      variant_key: assignment.variant_key || 'A',
+      headline: assignment.headline || defaultHeadlineText,
+      is_control: Boolean(assignment.is_control)
+    };
+
+    if (metadata && typeof metadata === 'object') {
+      Object.keys(metadata).forEach(function (key) {
+        debugState[key] = metadata[key];
+      });
+    }
+
+    window.JiyuHeadlineAbState = debugState;
+
+    if (window.console && typeof window.console.info === 'function') {
+      window.console.info('[Jiyu AB] ' + headlineTestKey + ' resolved to variant ' + debugState.variant_key, debugState);
+    }
   }
 
   function applyHeadlineText(text) {
@@ -197,6 +226,63 @@ document.addEventListener('DOMContentLoaded', function () {
     return variants[Math.floor(Math.random() * variants.length)] || variants[0];
   }
 
+  function normalizeVariantDefinition(variant) {
+    if (!variant || typeof variant !== 'object') {
+      return null;
+    }
+
+    var normalizedVariantKey = typeof variant.variant_key === 'string'
+      ? variant.variant_key.trim().toUpperCase()
+      : '';
+    var normalizedHeadline = typeof variant.headline === 'string'
+      ? variant.headline.trim()
+      : '';
+
+    if (!normalizedVariantKey || !normalizedHeadline) {
+      return null;
+    }
+
+    return {
+      variant_key: normalizedVariantKey,
+      headline: normalizedHeadline,
+      subheadline: typeof variant.subheadline === 'string' ? variant.subheadline.trim() : '',
+      is_control: Boolean(variant.is_control)
+    };
+  }
+
+  function fetchSupabaseHeadlineVariants() {
+    if (!window.fetch || !supabaseHeadlineConfig.url || !supabaseHeadlineConfig.publishableKey) {
+      return Promise.resolve(null);
+    }
+
+    var requestUrl = supabaseHeadlineConfig.url
+      + '/rest/v1/ab_tests?select=id,test_key,status,ab_variants(variant_key,headline,subheadline,is_control)'
+      + '&test_key=eq.' + encodeURIComponent(headlineTestKey)
+      + '&status=eq.active&limit=1';
+
+    return window.fetch(requestUrl, {
+      method: 'GET',
+      headers: {
+        apikey: supabaseHeadlineConfig.publishableKey
+      }
+    }).then(function (response) {
+      if (!response || response.ok === false || typeof response.json !== 'function') {
+        return null;
+      }
+
+      return response.json();
+    }).then(function (payload) {
+      var testRecord = Array.isArray(payload) ? payload[0] : payload;
+      var remoteVariants = testRecord && Array.isArray(testRecord.ab_variants)
+        ? testRecord.ab_variants.map(normalizeVariantDefinition).filter(Boolean)
+        : [];
+
+      return remoteVariants.length ? remoteVariants : null;
+    }).catch(function () {
+      return null;
+    });
+  }
+
   function applyFallbackHeadlineAssignment() {
     var storedAssignment = getStoredHeadlineAssignment();
     var fallbackVariantKey = storedAssignment
@@ -205,6 +291,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (storedAssignment && storedAssignment.headline) {
       applyHeadlineText(storedAssignment.headline);
+      publishHeadlineDebugState(storedAssignment, {
+        source: 'stored_assignment'
+      });
       return storedAssignment;
     }
 
@@ -227,18 +316,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     persistHeadlineAssignment(variantDefinition);
     applyHeadlineText(variantDefinition.headline);
+    publishHeadlineDebugState(variantDefinition, {
+      source: fallbackVariantKey ? 'persisted_variant' : 'fallback_map'
+    });
     return variantDefinition;
   }
 
   function resolveHeadlineAssignment() {
     var storedAssignment = getStoredHeadlineAssignment();
+    var persistedVariantKey = storedAssignment
+      ? storedAssignment.variant_key
+      : getPersistedVariantKey();
 
-    if (storedAssignment && storedAssignment.headline) {
-      applyHeadlineText(storedAssignment.headline);
-      return Promise.resolve(storedAssignment);
-    }
+    return fetchSupabaseHeadlineVariants().then(function (remoteVariants) {
+      var remoteAssignment = chooseVariantDefinition(remoteVariants || [], persistedVariantKey);
 
-    return Promise.resolve(applyFallbackHeadlineAssignment());
+      if (!remoteAssignment) {
+        if (storedAssignment && storedAssignment.headline) {
+          applyHeadlineText(storedAssignment.headline);
+          publishHeadlineDebugState(storedAssignment, {
+            source: 'stored_assignment'
+          });
+          return storedAssignment;
+        }
+
+        return applyFallbackHeadlineAssignment();
+      }
+
+      persistHeadlineAssignment(remoteAssignment);
+      applyHeadlineText(remoteAssignment.headline);
+      publishHeadlineDebugState(remoteAssignment, {
+        source: 'supabase'
+      });
+      return remoteAssignment;
+    }).catch(function () {
+      if (storedAssignment && storedAssignment.headline) {
+        applyHeadlineText(storedAssignment.headline);
+        publishHeadlineDebugState(storedAssignment, {
+          source: 'stored_assignment'
+        });
+        return storedAssignment;
+      }
+
+      return applyFallbackHeadlineAssignment();
+    });
   }
 
   function formatPrice(value) {
@@ -299,15 +420,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function trackCheckoutClick(checkoutUrl, purchaseType, bundleKey) {
     if (!tracker) {
-      return;
+      return Promise.resolve(null);
     }
 
-    tracker.track('cta_click', {
+    return tracker.trackEvent('cta_click', {
       metadata: {
         checkout_url: checkoutUrl,
         purchase_type: purchaseType,
         bundle: bundleKey
       }
+    }).then(function (result) {
+      if (result && result.queued === false && window && window.console && typeof window.console.error === 'function') {
+        window.console.error('[Jiyu AB] cta_click tracking failed or was blocked', result);
+      }
+
+      return result;
+    }).catch(function (error) {
+      if (window && window.console && typeof window.console.error === 'function') {
+        window.console.error('[Jiyu AB] cta_click tracking threw an error', error);
+      }
+
+      return { queued: false };
     });
   }
 
@@ -558,7 +691,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   headlineExperimentReady = resolveHeadlineAssignment().finally(function () {
     if (tracker) {
-      tracker.track('page_view');
+      tracker.trackEvent('page_view').then(function (result) {
+        if (window) {
+          window.JiyuHeadlineAbTrackingState = result || { queued: false };
+        }
+
+        if (!window || !window.console) {
+          return;
+        }
+
+        if (result && result.queued === false) {
+          if (typeof window.console.error === 'function') {
+            window.console.error('[Jiyu AB] page_view tracking failed or was blocked', result);
+          }
+          return;
+        }
+
+        if (typeof window.console.info === 'function') {
+          window.console.info('[Jiyu AB] page_view tracking sent', result || { queued: true });
+        }
+      }).catch(function (error) {
+        if (window && window.console && typeof window.console.error === 'function') {
+          window.console.error('[Jiyu AB] page_view tracking threw an error', error);
+        }
+      });
     }
   });
 
@@ -632,8 +788,9 @@ document.addEventListener('DOMContentLoaded', function () {
       headlineExperimentReady.finally(function () {
         syncCheckoutCtas();
         var checkoutUrl = getCheckoutUrl();
-        trackCheckoutClick(checkoutUrl, getPurchaseType(), getSelectedBundleKey());
-        window.location.href = checkoutUrl;
+        trackCheckoutClick(checkoutUrl, getPurchaseType(), getSelectedBundleKey()).finally(function () {
+          window.location.href = checkoutUrl;
+        });
       });
     });
   }
